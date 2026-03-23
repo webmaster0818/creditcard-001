@@ -1,0 +1,340 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="クレジットカード決済額シミュレーター | 最適なカードを診断"
+  description="年間決済額を入力するだけで、あなたに最適なクレジットカードを診断。実質コスト、獲得マイル・ポイントを自動計算します。"
+>
+  <!-- パンくずリスト構造化データ -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'ホーム',
+        item: new URL('/', Astro.site).toString(),
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: '診断ツール',
+        item: new URL('/simulator', Astro.site).toString(),
+      },
+    ],
+  })} />
+
+  <!-- SoftwareApplication構造化データ -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'クレジットカード決済額シミュレーター',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Web',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'JPY',
+    },
+    description: '年間決済額を入力するだけで、最適なクレジットカードを自動診断。実質コスト、獲得マイル・ポイントを自動計算します。',
+  })} />
+
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- パンくずリスト -->
+    <nav class="text-sm text-gray-600 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-blue-600">ホーム</a></li>
+        <li class="text-gray-400">/</li>
+        <li class="text-gray-900" aria-current="page">診断ツール</li>
+      </ol>
+    </nav>
+    <!-- ヘッダー -->
+    <div class="mb-8 text-center">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">💳 クレジットカード決済額シミュレーター</h1>
+      <p class="text-xl text-gray-600">
+        年間決済額を入力するだけで、あなたに最適なカードを自動診断します。
+      </p>
+    </div>
+
+    <!-- 入力フォーム -->
+    <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">📊 決済額を入力してください</h2>
+      
+      <div class="space-y-6">
+        <!-- 年間決済額 -->
+        <div>
+          <label for="annual-spending" class="block text-lg font-semibold text-gray-900 mb-2">
+            年間カード決済額（万円）
+          </label>
+          <input 
+            type="number" 
+            id="annual-spending" 
+            class="w-full text-2xl border-2 border-gray-300 rounded-lg px-6 py-4 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="200"
+            min="50"
+            max="1000"
+            value="200"
+          />
+          <p class="text-sm text-gray-600 mt-2">
+            💡 一般的な年間決済額: 200〜300万円
+          </p>
+        </div>
+
+        <!-- 楽天市場利用額 -->
+        <div>
+          <label for="rakuten-spending" class="block text-lg font-semibold text-gray-900 mb-2">
+            楽天市場での月間利用額（円）
+          </label>
+          <input 
+            type="number" 
+            id="rakuten-spending" 
+            class="w-full text-2xl border-2 border-gray-300 rounded-lg px-6 py-4 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            placeholder="20000"
+            min="0"
+            max="100000"
+            value="0"
+          />
+          <p class="text-sm text-gray-600 mt-2">
+            💡 楽天経済圏を活用している方は入力してください
+          </p>
+        </div>
+
+        <!-- マイル重視度 -->
+        <div>
+          <label class="block text-lg font-semibold text-gray-900 mb-2">
+            重視するポイント
+          </label>
+          <select id="priority" class="w-full text-lg border-2 border-gray-300 rounded-lg px-6 py-4 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <option value="jal">JALマイルを貯めたい</option>
+            <option value="ana">ANAマイルを貯めたい</option>
+            <option value="hotel">ホテル特典を重視</option>
+            <option value="cost">コスパ重視</option>
+          </select>
+        </div>
+
+        <!-- シミュレーションボタン -->
+        <button 
+          id="simulate-button"
+          class="w-full bg-blue-600 text-white text-xl font-bold px-8 py-4 rounded-lg hover:bg-blue-700 transition shadow-lg"
+        >
+          💡 最適なカードを診断する
+        </button>
+      </div>
+    </div>
+
+    <!-- 結果表示エリア -->
+    <div id="result-area" class="hidden">
+      <!-- おすすめカード -->
+      <div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-3xl font-bold mb-4">🏆 あなたにおすすめのカード</h2>
+        <div id="recommended-card" class="text-2xl font-bold"></div>
+        <p id="recommended-reason" class="text-lg mt-4 text-blue-100"></p>
+        <a id="recommended-link" href="#" class="inline-block mt-6 bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition">
+          詳細を見る →
+        </a>
+      </div>
+
+      <!-- 各カードの比較 -->
+      <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">📊 各カードの実質コスト比較</h2>
+        <div id="comparison-results" class="space-y-4">
+          <!-- 動的に生成 -->
+        </div>
+      </div>
+
+      <!-- 詳細説明 -->
+      <div class="bg-blue-50 rounded-lg p-8">
+        <h3 class="text-xl font-bold text-gray-900 mb-4">💡 実質コストとは？</h3>
+        <p class="text-gray-700 mb-4">
+          実質コスト = 年会費 - 獲得ポイント/マイルの価値
+        </p>
+        <p class="text-gray-700">
+          マイナスの値が大きいほど、お得なカードです。年会費を支払っても、それ以上の価値を得られることを意味します。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    interface CardData {
+      id: string;
+      name: string;
+      annualFee: number;
+      pointRate: number;
+      mileRate: number;
+      mileType: string;
+      url: string;
+      specialBonus?: (annualSpending: number, rakutenSpending: number) => number;
+    }
+
+    const cards: CardData[] = [
+      {
+        id: 'marriott-amex',
+        name: 'マリオットボンヴォイAMEX プレミアム',
+        annualFee: 82500,
+        pointRate: 2.0,
+        mileRate: 0.625,
+        mileType: 'マリオットP',
+        url: '/articles/marriott-amex-switching-guide',
+        specialBonus: (annual) => {
+          // 400万以上で75,000P無料宿泊（約75,000円相当）
+          return annual >= 400 ? 75000 : 0;
+        }
+      },
+      {
+        id: 'saison-platinum-business',
+        name: 'セゾンプラチナ・ビジネス・アメックス',
+        annualFee: 22000,
+        pointRate: 0.5,
+        mileRate: 1.125,
+        mileType: 'JALマイル',
+        url: '/articles/sample-saison-jal-mile'
+      },
+      {
+        id: 'amex-gold-preferred',
+        name: 'アメックスゴールドプリファード',
+        annualFee: 39600 + 3300, // MRP含む
+        pointRate: 0.5,
+        mileRate: 1.0,
+        mileType: 'ANAマイル',
+        url: '/articles/amex-gold-preferred-ana-mile',
+        specialBonus: () => {
+          // ゴールド・ダイニング年2回で約30,000円相当
+          return 30000;
+        }
+      },
+      {
+        id: 'hilton-amex',
+        name: 'ヒルトン・オナーズ AMEX',
+        annualFee: 16500,
+        pointRate: 1.5,
+        mileRate: 0.1,
+        mileType: 'ヒルトンP',
+        url: '/articles/hilton-amex-review',
+        specialBonus: (annual) => {
+          // 200万以上で週末無料宿泊（約30,000円相当）
+          return annual >= 200 ? 30000 : 0;
+        }
+      },
+      {
+        id: 'rakuten-premium',
+        name: '楽天プレミアムカード',
+        annualFee: 11000,
+        pointRate: 1.0,
+        mileRate: 0.5,
+        mileType: '楽天P',
+        url: '/articles/rakuten-premium-card-priority-pass',
+        specialBonus: (annual, rakuten) => {
+          // プライオリティ・パス年4回利用で約12,000円相当
+          // 楽天市場5%還元
+          const priorityPassValue = 12000;
+          const rakutenBonus = rakuten * 12 * 0.04; // 4%分のボーナス（基本1% + SPU 4%）
+          return priorityPassValue + rakutenBonus;
+        }
+      }
+    ];
+
+    function calculateValue(card: CardData, annualSpending: number, rakutenSpending: number): number {
+      // 基本ポイント/マイル価値（1マイル = 2円換算）
+      const annualSpendingYen = annualSpending * 10000;
+      const baseValue = annualSpendingYen * (card.mileRate / 100) * 2;
+      
+      // 特別ボーナス
+      const specialBonus = card.specialBonus ? card.specialBonus(annualSpending, rakutenSpending) : 0;
+      
+      // 実質コスト = 年会費 - 獲得価値
+      const netCost = card.annualFee - (baseValue + specialBonus);
+      
+      return Math.round(netCost);
+    }
+
+    function simulate() {
+      const annualSpending = parseFloat((document.getElementById('annual-spending') as HTMLInputElement).value);
+      const rakutenSpending = parseFloat((document.getElementById('rakuten-spending') as HTMLInputElement).value) || 0;
+      const priority = (document.getElementById('priority') as HTMLSelectElement).value;
+
+      if (!annualSpending || annualSpending < 50) {
+        alert('年間決済額を入力してください（50万円以上）');
+        return;
+      }
+
+      // 各カードの実質コストを計算
+      const results = cards.map(card => ({
+        ...card,
+        netCost: calculateValue(card, annualSpending, rakutenSpending)
+      })).sort((a, b) => a.netCost - b.netCost);
+
+      // 優先度に応じておすすめカードを決定
+      let recommendedCard = results[0];
+      if (priority === 'jal') {
+        recommendedCard = results.find(c => c.id === 'saison-platinum-business') || results[0];
+      } else if (priority === 'ana') {
+        recommendedCard = results.find(c => c.id === 'amex-gold-preferred') || results[0];
+      } else if (priority === 'hotel') {
+        recommendedCard = results.find(c => c.id === 'hilton-amex') || results[0];
+      } else if (priority === 'cost') {
+        recommendedCard = results[0]; // 実質コスト最安
+      }
+
+      // おすすめカード表示
+      document.getElementById('recommended-card')!.textContent = recommendedCard.name;
+      const reasonMap: {[key: string]: string} = {
+        'jal': 'JALマイル還元率が最も高く、年会費も手頃です。',
+        'ana': 'ANAマイル還元率1.0%を実現し、ゴールド・ダイニング特典も充実。',
+        'hotel': 'ヒルトン・ゴールド会員資格が自動付帯し、無料宿泊特典も獲得可能。',
+        'cost': '実質コストが最も安く、コスパに優れています。'
+      };
+      document.getElementById('recommended-reason')!.textContent = reasonMap[priority];
+      (document.getElementById('recommended-link') as HTMLAnchorElement).href = recommendedCard.url;
+
+      // 比較結果表示
+      const comparisonHTML = results.map((card, index) => {
+        const costColor = card.netCost <= 0 ? 'text-green-600' : 'text-red-600';
+        const rankBadge = index === 0 ? '<span class="bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-sm font-bold ml-2">最安</span>' : '';
+        
+        return `
+          <div class="border-2 ${index === 0 ? 'border-blue-500 bg-blue-50' : 'border-gray-200'} rounded-lg p-6">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-lg font-bold text-gray-900">${card.name}${rankBadge}</h3>
+              <a href="${card.url}" class="text-blue-600 hover:underline text-sm font-semibold">詳細 →</a>
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <span class="text-gray-600">年会費:</span>
+                <span class="font-bold text-gray-900 ml-2">${card.annualFee.toLocaleString()}円</span>
+              </div>
+              <div>
+                <span class="text-gray-600">${card.mileType}還元率:</span>
+                <span class="font-bold text-blue-600 ml-2">${card.mileRate}%</span>
+              </div>
+              <div class="col-span-2 border-t pt-3">
+                <span class="text-gray-600">実質コスト:</span>
+                <span class="font-bold ${costColor} text-2xl ml-2">
+                  ${card.netCost <= 0 ? '▲' : '+'}${Math.abs(card.netCost).toLocaleString()}円
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('comparison-results')!.innerHTML = comparisonHTML;
+      document.getElementById('result-area')!.classList.remove('hidden');
+      
+      // 結果エリアまでスムーススクロール
+      document.getElementById('result-area')!.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.getElementById('simulate-button')!.addEventListener('click', simulate);
+
+    // Enter キーでもシミュレーション実行
+    document.getElementById('annual-spending')!.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') simulate();
+    });
+    document.getElementById('rakuten-spending')!.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') simulate();
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+}
+
+const { title, description, image = '/images/og-default.jpg' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.site)} />
+  </head>
+  <body class="min-h-screen bg-gray-50">
+    <header class="bg-white shadow-sm border-b">
+      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex justify-between items-center">
+          <a href="/" class="text-2xl font-bold text-blue-600">
+            クレジットカード比較
+          </a>
+          <div class="flex gap-6">
+            <a href="/articles" class="text-gray-700 hover:text-blue-600">記事一覧</a>
+            <a href="/cards/comparison" class="text-gray-700 hover:text-blue-600">カード比較</a>
+            <a href="/simulator" class="text-gray-700 hover:text-blue-600 bg-blue-100 px-3 py-1 rounded-lg font-semibold">診断ツール</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold mb-4">クレジットカード比較</h3>
+            <p class="text-gray-400 text-sm">
+              マリオットAMEXからの切り替えをサポートする専門サイト
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">人気記事</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/marriott-amex-switching-guide" class="text-gray-400 hover:text-white">マリオットAMEX切り替えガイド</a></li>
+              <li><a href="/saison-platinum-business-jal-mile" class="text-gray-400 hover:text-white">セゾンプラチナビジネス完全ガイド</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">サイト情報</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/privacy" class="text-gray-400 hover:text-white">プライバシーポリシー</a></li>
+              <li><a href="/disclaimer" class="text-gray-400 hover:text-white">免責事項</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+          <p>&copy; 2026 クレジットカード比較. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

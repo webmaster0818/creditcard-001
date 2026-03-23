@@ -1,17 +1,215 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 
+// 最新記事を取得
+const allArticles = await getCollection('articles');
+const latestArticles = allArticles
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+  .slice(0, 6);
+
+const featuredArticles = allArticles.filter((article) => article.data.featured);
+
+// WebSite構造化データ
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'クレジットカード比較',
+  description: 'マリオットボンヴォイAMEXからの切り替えをサポートする専門サイト',
+  url: Astro.site?.toString(),
+};
+
+// FAQスキーマ
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'マリオットAMEXから切り替えるべきカードは？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'JALマイル重視ならセゾンプラチナビジネス、ANAマイル重視ならアメックスゴールドプリファード、ホテル特典重視ならヒルトンAMEXがおすすめです。',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'マリオットAMEXの年会費はいくら？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '2025年8月以降、マリオットボンヴォイAMEXプレミアムの年会費は82,500円です。',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'セゾンプラチナビジネスのJALマイル還元率は？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'SAISON MILE CLUB登録で1.125%のJALマイル還元率を実現できます。',
+      },
+    },
+  ],
+};
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout 
+  title="クレジットカード比較 | マリオットAMEX切り替えガイド"
+  description="マリオットボンヴォイAMEXからの切り替えをサポート。セゾンプラチナビジネス、アメックスゴールドなど最適なカードを徹底比較。"
+>
+  <!-- 構造化データ -->
+  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <!-- ヒーローセクション -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="max-w-3xl">
+        <h1 class="text-5xl font-bold mb-6">
+          マリオットAMEXから<br />最適なカードへ切り替え
+        </h1>
+        <p class="text-xl mb-8 text-blue-100">
+          2025年改悪後、年会費82,500円の価値を感じられないあなたへ。
+          JALマイル、ANAマイル、ホテル特典—あなたに最適な代替カードを見つけましょう。
+        </p>
+        <div class="flex gap-4">
+          <a href="/articles/marriott-amex-switching-guide" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+            切り替えガイドを見る
+          </a>
+          <a href="/simulator" class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition border-2 border-yellow-500">
+            💡 診断ツール
+          </a>
+          <a href="/cards/comparison" class="bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-600 transition border border-blue-500">
+            カード比較表
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 注目記事 -->
+  {featuredArticles.length > 0 && (
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">📌 必読記事</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {featuredArticles.map((article) => (
+          <a href={`/articles/${article.slug}`} class="group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+            <div class="p-6">
+              <div class="flex items-center gap-2 text-sm text-gray-600 mb-3">
+                <time datetime={article.data.pubDate.toISOString()}>
+                  {article.data.pubDate.toLocaleDateString('ja-JP')}
+                </time>
+                {article.data.tags.slice(0, 2).map((tag) => (
+                  <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition">
+                {article.data.title}
+              </h3>
+              <p class="text-gray-600">
+                {article.data.description}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- 人気の代替カード -->
+  <section class="bg-gray-100 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">🔥 人気の代替カード</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow p-6">
+          <div class="text-blue-600 text-lg font-semibold mb-2">JALマイル重視</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">セゾンプラチナビジネス</h3>
+          <ul class="text-sm text-gray-700 space-y-2 mb-4">
+            <li>✅ JALマイル還元率<strong>1.125%</strong></li>
+            <li>✅ 年会費22,000円（初年度無料）</li>
+            <li>✅ プラチナ特典充実</li>
+          </ul>
+          <a href="/cards/saison-platinum-business" class="text-blue-600 font-semibold hover:underline">
+            詳細を見る →
+          </a>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+          <div class="text-green-600 text-lg font-semibold mb-2">ANAマイル重視</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">アメックスゴールド プリファード</h3>
+          <ul class="text-sm text-gray-700 space-y-2 mb-4">
+            <li>✅ ANAマイル還元率<strong>最大1.0%</strong></li>
+            <li>✅ 年会費39,600円</li>
+            <li>✅ 旅行特典豊富</li>
+          </ul>
+          <a href="/cards/amex-gold-preferred" class="text-blue-600 font-semibold hover:underline">
+            詳細を見る →
+          </a>
+        </div>
+
+        <div class="bg-white rounded-lg shadow p-6">
+          <div class="text-purple-600 text-lg font-semibold mb-2">ホテル特典重視</div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">ヒルトンオナーズ AMEX</h3>
+          <ul class="text-sm text-gray-700 space-y-2 mb-4">
+            <li>✅ ヒルトンゴールド自動付帯</li>
+            <li>✅ 年間200万で無料宿泊</li>
+            <li>✅ 年会費16,500円</li>
+          </ul>
+          <a href="/cards/hilton-honors-amex" class="text-blue-600 font-semibold hover:underline">
+            詳細を見る →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新記事 -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">📰 最新記事</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {latestArticles.map((article) => (
+        <a href={`/articles/${article.slug}`} class="group">
+          <article class="bg-white rounded-lg shadow hover:shadow-lg transition">
+            <div class="p-6">
+              <time class="text-sm text-gray-600" datetime={article.data.pubDate.toISOString()}>
+                {article.data.pubDate.toLocaleDateString('ja-JP')}
+              </time>
+              <h3 class="text-lg font-bold text-gray-900 mt-2 mb-2 group-hover:text-blue-600 transition">
+                {article.data.title}
+              </h3>
+              <p class="text-gray-600 text-sm line-clamp-3">
+                {article.data.description}
+              </p>
+            </div>
+          </article>
+        </a>
+      ))}
+    </div>
+    
+    <div class="text-center mt-8">
+      <a href="/articles" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+        記事一覧を見る
+      </a>
+    </div>
+  </section>
+
+  <!-- CTAセクション -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-4">
+        💡 あなたに最適なカードを見つけよう
+      </h2>
+      <p class="text-xl text-blue-100 mb-8">
+        年間決済額を入力するだけで、実質コストを自動計算。最適なカードを診断します。
+      </p>
+      <div class="flex justify-center gap-4">
+        <a href="/simulator" class="inline-block bg-yellow-400 text-gray-900 px-10 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition shadow-lg">
+          💳 診断ツールを使う（無料）
+        </a>
+        <a href="/cards/comparison" class="inline-block bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition">
+          📊 カード比較表を見る
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

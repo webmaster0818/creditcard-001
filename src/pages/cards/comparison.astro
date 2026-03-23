@@ -1,0 +1,458 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const cards = [
+  {
+    id: 'marriott-amex',
+    name: 'マリオットボンヴォイAMEX プレミアム',
+    shortName: 'マリオットAMEX',
+    annualFee: 82500,
+    pointRate: 2.0,
+    hotelPointRate: 4.0,
+    mileType: '間接交換',
+    mileRate: 0.625,
+    hotelStatus: 'ゴールド（プラチナは500万〜）',
+    freeNight: '年400万決済',
+    priorityPass: 'あり（無制限）',
+    concierge: 'あり',
+    specialBenefit: '年400万でプラチナエリート維持可能',
+    color: 'bg-purple-100 border-purple-300',
+    url: '/articles/marriott-amex-switching-guide'
+  },
+  {
+    id: 'saison-platinum-business',
+    name: 'セゾンプラチナ・ビジネス・アメックス',
+    shortName: 'セゾンプラチナビジネス',
+    annualFee: 22000,
+    annualFeeNote: '初年度無料',
+    pointRate: 0.5,
+    hotelPointRate: null,
+    mileType: 'JALマイル',
+    mileRate: 1.125,
+    hotelStatus: 'なし',
+    freeNight: 'なし',
+    priorityPass: 'あり（無制限）',
+    concierge: 'あり',
+    specialBenefit: 'SAISON MILE CLUBでJAL自動付与',
+    color: 'bg-blue-100 border-blue-300',
+    url: '/articles/sample-saison-jal-mile'
+  },
+  {
+    id: 'amex-gold-preferred',
+    name: 'アメリカン・エキスプレス・ゴールド・プリファード',
+    shortName: 'アメックスゴールド',
+    annualFee: 39600,
+    annualFeeNote: '+3,300円（MRP）',
+    pointRate: 0.5,
+    hotelPointRate: null,
+    mileType: 'ANAマイル',
+    mileRate: 1.0,
+    hotelStatus: 'なし',
+    freeNight: 'なし',
+    priorityPass: '年2回まで',
+    concierge: 'なし',
+    specialBenefit: 'ゴールド・ダイニング年2回',
+    color: 'bg-yellow-100 border-yellow-300',
+    url: '/articles/amex-gold-preferred-ana-mile'
+  },
+  {
+    id: 'hilton-amex',
+    name: 'ヒルトン・オナーズ アメリカン・エキスプレス・カード',
+    shortName: 'ヒルトンAMEX',
+    annualFee: 16500,
+    pointRate: 1.5,
+    hotelPointRate: 3.0,
+    mileType: '低レート',
+    mileRate: 0.1,
+    hotelStatus: 'ヒルトン・ゴールド',
+    freeNight: '年200万決済（週末のみ）',
+    priorityPass: 'なし',
+    concierge: 'なし',
+    specialBenefit: 'ゴールド会員自動付帯',
+    color: 'bg-green-100 border-green-300',
+    url: '/articles/hilton-amex-review'
+  },
+  {
+    id: 'rakuten-premium',
+    name: '楽天プレミアムカード',
+    shortName: '楽天プレミアム',
+    annualFee: 11000,
+    pointRate: 1.0,
+    hotelPointRate: null,
+    mileType: '低レート',
+    mileRate: 0.5,
+    hotelStatus: 'なし',
+    freeNight: 'なし',
+    priorityPass: 'あり（無制限）',
+    concierge: 'なし',
+    specialBenefit: '楽天市場5.0%還元',
+    color: 'bg-red-100 border-red-300',
+    url: '/articles/rakuten-premium-card-priority-pass'
+  }
+];
+---
+
+<BaseLayout 
+  title="クレジットカード比較表 | 5枚のカードを徹底比較"
+  description="マリオットAMEX、セゾンプラチナビジネス、アメックスゴールド、ヒルトンAMEX、楽天プレミアムの5枚を一覧比較。年会費、マイル還元率、特典を徹底チェック。"
+>
+  <!-- パンくずリスト構造化データ -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'ホーム',
+        item: new URL('/', Astro.site).toString(),
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'カード比較表',
+        item: new URL('/cards/comparison', Astro.site).toString(),
+      },
+    ],
+  })} />
+
+  <!-- ItemList構造化データ -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'クレジットカード比較',
+    description: 'マリオットAMEX、セゾンプラチナビジネス、アメックスゴールド、ヒルトンAMEX、楽天プレミアムの徹底比較',
+    itemListElement: cards.map((card, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Product',
+        name: card.name,
+        description: card.specialBenefit,
+        url: new URL(card.url, Astro.site).toString(),
+      },
+    })),
+  })} />
+
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- パンくずリスト -->
+    <nav class="text-sm text-gray-600 mb-6" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="hover:text-blue-600">ホーム</a></li>
+        <li class="text-gray-400">/</li>
+        <li class="text-gray-900" aria-current="page">カード比較表</li>
+      </ol>
+    </nav>
+    <!-- ヘッダー -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">クレジットカード比較表</h1>
+      <p class="text-xl text-gray-600">
+        マリオットAMEXからの切り替え候補5枚を徹底比較。あなたに最適な1枚を見つけましょう。
+      </p>
+    </div>
+
+    <!-- フィルターコントロール -->
+    <div class="bg-white rounded-lg shadow p-6 mb-8">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">フィルター</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <!-- 年会費フィルター -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">年会費</label>
+          <select id="filter-annual-fee" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <option value="all">すべて</option>
+            <option value="low">〜20,000円</option>
+            <option value="mid">20,001〜50,000円</option>
+            <option value="high">50,001円〜</option>
+          </select>
+        </div>
+
+        <!-- マイル種類フィルター -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">マイル種類</label>
+          <select id="filter-mile-type" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <option value="all">すべて</option>
+            <option value="jal">JALマイル</option>
+            <option value="ana">ANAマイル</option>
+            <option value="hotel">ホテルポイント</option>
+          </select>
+        </div>
+
+        <!-- プライオリティ・パスフィルター -->
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">プライオリティ・パス</label>
+          <select id="filter-priority-pass" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <option value="all">すべて</option>
+            <option value="yes">あり</option>
+            <option value="no">なし</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-4 flex gap-4">
+        <button id="reset-filters" class="bg-gray-200 text-gray-800 px-6 py-2 rounded-lg hover:bg-gray-300 transition">
+          リセット
+        </button>
+      </div>
+    </div>
+
+    <!-- デスクトップ用比較表 -->
+    <div class="hidden lg:block bg-white rounded-lg shadow overflow-x-auto mb-8">
+      <table class="w-full">
+        <thead class="bg-gray-50 border-b-2 border-gray-200">
+          <tr>
+            <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">項目</th>
+            {cards.map((card) => (
+              <th class={`px-6 py-4 text-center text-sm font-semibold text-gray-900 border-l-2 ${card.color}`}>
+                <a href={card.url} class="hover:text-blue-600">{card.shortName}</a>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody id="comparison-table-body">
+          <!-- 年会費 -->
+          <tr class="border-b border-gray-200 hover:bg-gray-50">
+            <td class="px-6 py-4 font-semibold text-gray-900">年会費</td>
+            {cards.map((card) => (
+              <td class="px-6 py-4 text-center border-l">
+                <div class="font-bold text-lg text-gray-900">{card.annualFee.toLocaleString()}円</div>
+                {card.annualFeeNote && (
+                  <div class="text-xs text-gray-600 mt-1">{card.annualFeeNote}</div>
+                )}
+              </td>
+            ))}
+          </tr>
+
+          <!-- ポイント還元率（通常） -->
+          <tr class="border-b border-gray-200 hover:bg-gray-50">
+            <td class="px-6 py-4 font-semibold text-gray-900">ポイント還元率（通常）</td>
+            {cards.map((card) => (
+              <td class="px-6 py-4 text-center border-l text-gray-700">
+                {card.pointRate}%
+              </td>
+            ))}
+          </tr>
+
+          <!-- マイル還元率 -->
+          <tr class="border-b border-gray-200 hover:bg-gray-50">
+            <td class="px-6 py-4 font-semibold text-gray-900">マイル還元率</td>
+            {cards.map((card) => (
+              <td class="px-6 py-4 text-center border-l">
+                <div class="font-bold text-blue-600">{card.mileRate}%</div>
+                <div class="text-xs text-gray-600 mt-1">({card.mileType})</div>
+              </td>
+            ))}
+          </tr>
+
+          <!-- ホテル上級会員資格 -->
+          <tr class="border-b border-gray-200 hover:bg-gray-50">
+            <td class="px-6 py-4 font-semibold text-gray-900">ホテル上級会員資格</td>
+            {cards.map((card) => (
+              <td class="px-6 py-4 text-center border-l text-gray-700">
+                {card.hotelStatus}
+              </td>
+            ))}
+          </tr>
+
+          <!-- 無料宿泊特典 -->
+          <tr class="border-b border-gray-200 hover:bg-gray-50">
+            <td class="px-6 py-4 font-semibold text-gray-900">無料宿泊特典</td>
+            {cards.map((card) => (
+              <td class="px-6 py-4 text-center border-l text-gray-700">
+                {card.freeNight}
+              </td>
+            ))}
+          </tr>
+
+          <!-- プライオリティ・パス -->
+          <tr class="border-b border-gray-200 hover:bg-gray-50">
+            <td class="px-6 py-4 font-semibold text-gray-900">プライオリティ・パス</td>
+            {cards.map((card) => (
+              <td class="px-6 py-4 text-center border-l text-gray-700">
+                {card.priorityPass}
+              </td>
+            ))}
+          </tr>
+
+          <!-- コンシェルジュ -->
+          <tr class="border-b border-gray-200 hover:bg-gray-50">
+            <td class="px-6 py-4 font-semibold text-gray-900">コンシェルジュ</td>
+            {cards.map((card) => (
+              <td class="px-6 py-4 text-center border-l text-gray-700">
+                {card.concierge}
+              </td>
+            ))}
+          </tr>
+
+          <!-- 特別特典 -->
+          <tr class="hover:bg-gray-50">
+            <td class="px-6 py-4 font-semibold text-gray-900">特別特典</td>
+            {cards.map((card) => (
+              <td class="px-6 py-4 text-center border-l text-sm text-gray-700">
+                {card.specialBenefit}
+              </td>
+            ))}
+          </tr>
+
+          <!-- 詳細リンク -->
+          <tr class="bg-gray-50">
+            <td class="px-6 py-4 font-semibold text-gray-900">詳細</td>
+            {cards.map((card) => (
+              <td class="px-6 py-4 text-center border-l">
+                <a href={card.url} class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition text-sm font-semibold">
+                  詳しく見る
+                </a>
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- モバイル用カード一覧 -->
+    <div class="lg:hidden space-y-6" id="mobile-card-list">
+      {cards.map((card) => (
+        <div class={`card-item bg-white rounded-lg shadow p-6 border-2 ${card.color}`} 
+             data-annual-fee={card.annualFee}
+             data-mile-type={card.mileType.toLowerCase()}
+             data-priority-pass={card.priorityPass.includes('あり') ? 'yes' : 'no'}>
+          <h3 class="text-xl font-bold text-gray-900 mb-4">{card.name}</h3>
+          
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span class="font-semibold text-gray-700">年会費:</span>
+              <span class="text-gray-900 font-bold">{card.annualFee.toLocaleString()}円</span>
+            </div>
+            
+            <div class="flex justify-between">
+              <span class="font-semibold text-gray-700">マイル還元率:</span>
+              <span class="text-blue-600 font-bold">{card.mileRate}% ({card.mileType})</span>
+            </div>
+            
+            <div class="flex justify-between">
+              <span class="font-semibold text-gray-700">ホテル上級会員:</span>
+              <span class="text-gray-900">{card.hotelStatus}</span>
+            </div>
+            
+            <div class="flex justify-between">
+              <span class="font-semibold text-gray-700">無料宿泊:</span>
+              <span class="text-gray-900">{card.freeNight}</span>
+            </div>
+            
+            <div class="flex justify-between">
+              <span class="font-semibold text-gray-700">プライオリティ・パス:</span>
+              <span class="text-gray-900">{card.priorityPass}</span>
+            </div>
+
+            <div class="border-t pt-3 mt-3">
+              <span class="font-semibold text-gray-700">特別特典:</span>
+              <p class="text-gray-900 mt-1">{card.specialBenefit}</p>
+            </div>
+          </div>
+
+          <a href={card.url} class="block mt-4 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition text-center font-semibold">
+            詳しく見る
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- おすすめの選び方 -->
+    <div class="mt-12 bg-blue-50 rounded-lg p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">💡 おすすめの選び方</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <h3 class="font-bold text-lg text-gray-900 mb-2">JALマイル重視</h3>
+          <p class="text-gray-700 mb-2">
+            <strong class="text-blue-600">セゾンプラチナビジネス</strong>がおすすめ。
+          </p>
+          <p class="text-sm text-gray-600">
+            JALマイル還元率1.125%で本家JALカードより高還元。年会費も22,000円と手頃。
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-lg text-gray-900 mb-2">ANAマイル重視</h3>
+          <p class="text-gray-700 mb-2">
+            <strong class="text-blue-600">アメックスゴールドプリファード</strong>がおすすめ。
+          </p>
+          <p class="text-sm text-gray-600">
+            ANAマイル還元率1.0%、ゴールド・ダイニング特典で年会費の元が取れる。
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-lg text-gray-900 mb-2">ホテル特典重視</h3>
+          <p class="text-gray-700 mb-2">
+            <strong class="text-blue-600">ヒルトンAMEX</strong>がおすすめ。
+          </p>
+          <p class="text-sm text-gray-600">
+            年会費16,500円でヒルトン・ゴールド会員資格が自動付帯。週末無料宿泊特典も。
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-lg text-gray-900 mb-2">コスパ重視</h3>
+          <p class="text-gray-700 mb-2">
+            <strong class="text-blue-600">楽天プレミアムカード</strong>がおすすめ。
+          </p>
+          <p class="text-sm text-gray-600">
+            年会費11,000円でプライオリティ・パス付帯。楽天市場5.0%還元で元が取れる。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // フィルター機能
+    const filterAnnualFee = document.getElementById('filter-annual-fee') as HTMLSelectElement;
+    const filterMileType = document.getElementById('filter-mile-type') as HTMLSelectElement;
+    const filterPriorityPass = document.getElementById('filter-priority-pass') as HTMLSelectElement;
+    const resetButton = document.getElementById('reset-filters') as HTMLButtonElement;
+    const cardItems = document.querySelectorAll('.card-item');
+
+    function applyFilters() {
+      const annualFeeFilter = filterAnnualFee.value;
+      const mileTypeFilter = filterMileType.value;
+      const priorityPassFilter = filterPriorityPass.value;
+
+      cardItems.forEach((item) => {
+        const card = item as HTMLElement;
+        const annualFee = parseInt(card.dataset.annualFee || '0');
+        const mileType = card.dataset.mileType || '';
+        const priorityPass = card.dataset.priorityPass || '';
+
+        let showCard = true;
+
+        // 年会費フィルター
+        if (annualFeeFilter === 'low' && annualFee > 20000) showCard = false;
+        if (annualFeeFilter === 'mid' && (annualFee <= 20000 || annualFee > 50000)) showCard = false;
+        if (annualFeeFilter === 'high' && annualFee <= 50000) showCard = false;
+
+        // マイル種類フィルター
+        if (mileTypeFilter === 'jal' && !mileType.includes('jal')) showCard = false;
+        if (mileTypeFilter === 'ana' && !mileType.includes('ana')) showCard = false;
+        if (mileTypeFilter === 'hotel' && !mileType.includes('間接交換') && !mileType.includes('低レート')) showCard = false;
+
+        // プライオリティ・パスフィルター
+        if (priorityPassFilter === 'yes' && priorityPass !== 'yes') showCard = false;
+        if (priorityPassFilter === 'no' && priorityPass !== 'no') showCard = false;
+
+        card.style.display = showCard ? 'block' : 'none';
+      });
+    }
+
+    filterAnnualFee.addEventListener('change', applyFilters);
+    filterMileType.addEventListener('change', applyFilters);
+    filterPriorityPass.addEventListener('change', applyFilters);
+
+    resetButton.addEventListener('click', () => {
+      filterAnnualFee.value = 'all';
+      filterMileType.value = 'all';
+      filterPriorityPass.value = 'all';
+      applyFilters();
+    });
+  </script>
+</BaseLayout>
