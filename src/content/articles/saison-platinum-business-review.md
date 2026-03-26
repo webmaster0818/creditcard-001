@@ -7,6 +7,7 @@ author: "クレジットカード比較編集部"
 category: "カードレビュー"
 image: "/images/saison-platinum-business-review.jpg"
 tags: ["セゾンプラチナビジネス", "ビジネスカード", "JALマイル", "プライオリティパス"]
+heroImage: /images/heroes/saison-platinum-review.jpg
 ---
 
 # セゾンプラチナビジネス完全レビュー｜メリット・デメリット徹底解説【2026年最新】

@@ -6,6 +6,7 @@ updatedDate: 2026-03-26
 author: クレジットカード比較編集部
 tags: [ラグジュアリーカード, ホテル系クレジットカード, プレミアムカード]
 featured: false
+heroImage: /images/heroes/luxury-card-hotel.jpg
 ---
 
 # ラグジュアリーカードのホテル特典を徹底解説｜チタン・ブラック・ゴールド比較

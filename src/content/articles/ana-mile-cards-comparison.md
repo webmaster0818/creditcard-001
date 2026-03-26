@@ -6,6 +6,7 @@ updatedDate: 2026-03-26
 author: クレジットカード比較編集部
 tags: [ANAマイル, マイル還元率, ANAカード, マイルが貯まるカード]
 featured: false
+heroImage: /images/heroes/ana-mile-comparison.jpg
 ---
 
 # ANAマイルが貯まるクレジットカードおすすめ9選｜還元率・特典徹底比較

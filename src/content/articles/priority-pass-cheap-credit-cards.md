@@ -7,6 +7,7 @@ author: "クレジットカード比較編集部"
 category: "空港ラウンジ"
 image: "/images/priority-pass-cards-comparison.jpg"
 tags: ["プライオリティパス", "空港ラウンジ", "年会費", "比較"]
+heroImage: /images/heroes/priority-pass-cheap.jpg
 ---
 
 # プライオリティパス年会費が安いクレジットカード比較｜最安11,000円で無料付帯【2026年最新】

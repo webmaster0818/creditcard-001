@@ -6,6 +6,7 @@ updatedDate: 2026-03-19
 author: クレジットカード比較編集部
 tags: [無料宿泊, クレジットカード, マリオットAMEX, ヒルトンAMEX, ホテル特典]
 featured: true
+heroImage: /images/heroes/free-hotel-stay-cards.jpg
 ---
 
 「クレジットカードの無料宿泊特典で、高級ホテルにタダで泊まりたい！」

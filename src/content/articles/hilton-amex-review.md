@@ -6,6 +6,7 @@ updatedDate: 2026-03-17
 author: クレジットカード比較編集部
 tags: [ヒルトンAMEX, ホテル系クレジットカード, マリオットAMEX比較, ヒルトンゴールド]
 featured: false
+heroImage: /images/heroes/hilton-amex-review.jpg
 ---
 
 「マリオットAMEXの年会費が高すぎる…でもホテルの上級会員資格は諦めたくない」

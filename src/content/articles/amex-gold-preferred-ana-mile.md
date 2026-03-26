@@ -6,6 +6,7 @@ updatedDate: 2026-03-17
 author: クレジットカード比較編集部
 tags: [アメックスゴールドプリファード, ANAマイル, マリオットAMEX比較, ゴールドダイニング]
 featured: false
+heroImage: /images/heroes/amex-gold-ana-mile.jpg
 ---
 
 「マリオットAMEXは高すぎる…でもアメックスのステータスとANAマイルは諦めたくない」

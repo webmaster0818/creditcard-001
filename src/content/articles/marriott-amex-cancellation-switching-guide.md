@@ -7,6 +7,7 @@ author: "クレジットカード比較編集部"
 category: "カード解約・乗り換え"
 image: "/images/marriott-cancellation-guide.jpg"
 tags: ["マリオットボンヴォイ", "アメックス", "解約", "乗り換え", "ホテル系カード"]
+heroImage: /images/heroes/marriott-cancellation.jpg
 ---
 
 # マリオットアメックス解約・乗り換え完全ガイド｜損しないタイミングと代替カード3選【2026年最新】

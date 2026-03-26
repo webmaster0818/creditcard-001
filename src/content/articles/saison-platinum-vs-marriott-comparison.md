@@ -6,6 +6,7 @@ updatedDate: 2026-03-19
 author: クレジットカード比較編集部
 tags: [セゾンプラチナビジネス, マリオットAMEX, カード比較, JALマイル]
 featured: true
+heroImage: /images/heroes/saison-platinum-vs-marriott.jpg
 ---
 
 「セゾンプラチナビジネスとマリオットAMEX、どっちを選べばいいの？」

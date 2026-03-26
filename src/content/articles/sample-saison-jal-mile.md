@@ -5,6 +5,7 @@ pubDate: 2026-03-15
 author: クレジットカード比較編集部
 tags: [セゾンプラチナビジネス, JALマイル, SAISON MILE CLUB]
 featured: true
+heroImage: /images/heroes/saison-jal-mile.jpg
 ---
 
 ## セゾンプラチナビジネスとは？

@@ -6,6 +6,7 @@ updatedDate: 2026-03-19
 author: クレジットカード比較編集部
 tags: [JALマイル, ANAマイル, マイル比較, クレジットカード]
 featured: true
+heroImage: /images/heroes/jal-vs-ana-mile.jpg
 ---
 
 「JALマイルとANAマイル、どっちを貯めればいいの？」

@@ -6,6 +6,7 @@ updatedDate: 2026-03-26
 author: クレジットカード比較編集部
 tags: [マイル最強, JALマイル, ANAマイル, マイル還元率, 2026年版]
 featured: true
+heroImage: /images/heroes/mile-best-cards-2026.jpg
 ---
 
 # マイル最強クレジットカード2026年版｜JAL・ANA・汎用マイル徹底比較

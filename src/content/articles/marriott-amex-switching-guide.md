@@ -6,6 +6,7 @@ updatedDate: 2026-03-17
 author: クレジットカード比較編集部
 tags: [マリオットAMEX, 切り替え, セゾンプラチナビジネス, JALマイル, クレジットカード比較]
 featured: true
+heroImage: /images/heroes/marriott-amex-switching.jpg
 ---
 
 「マリオットボンヴォイAMEXの年会費が82,500円に値上げ…もう持ち続ける意味ある？」
@@ -109,7 +110,13 @@ featured: true
 
 ## おすすめ代替カード5選【用途別完全ガイド】
 
+![5枚の代替カード比較](/images/cards/5-cards-comparison.jpg)
+*マリオットAMEXの代替カードとして検討すべき主要5枚*
+
 ### 1位: JALマイル重視 → セゾンプラチナ・ビジネス・アメックス
+
+![セゾンプラチナビジネスカード](/images/cards/saison-platinum-business.jpg)
+*セゾンプラチナ・ビジネス・アメリカン・エキスプレス・カード*
 
 **こんな人に最適:**
 - ✅ JALマイルをメインに貯めたい

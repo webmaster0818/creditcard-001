@@ -6,6 +6,7 @@ updatedDate: 2026-03-19
 author: クレジットカード比較編集部
 tags: [ホテル系クレジットカード, マリオットAMEX, ヒルトンAMEX, ホテル比較]
 featured: true
+heroImage: /images/heroes/hotel-credit-card-comparison.jpg
 ---
 
 「ホテル系クレジットカードってどれを選べばいいの？」

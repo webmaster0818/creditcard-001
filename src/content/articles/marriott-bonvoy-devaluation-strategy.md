@@ -7,6 +7,7 @@ author: "クレジットカード比較編集部"
 category: "ホテルプログラム"
 image: "/images/marriott-devaluation-strategy.jpg"
 tags: ["マリオットボンヴォイ", "改悪", "対策", "ポイントプログラム", "ホテル"]
+heroImage: /images/heroes/marriott-devaluation.jpg
 ---
 
 # マリオットボンヴォイ改悪対策マニュアル｜2026年版ポイント価値維持戦略とおすすめ代替案

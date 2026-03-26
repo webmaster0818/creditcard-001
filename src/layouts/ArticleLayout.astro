@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { article } = Astro.props;
-const { title, description, pubDate, updatedDate, author, tags } = article.data;
+const { title, description, pubDate, updatedDate, author, tags, heroImage } = article.data;
 
 const formattedPubDate = pubDate.toLocaleDateString('ja-JP', {
   year: 'numeric',
@@ -108,10 +108,35 @@ const articleSchema = {
       </ol>
     </nav>
 
+    <!-- ヒーロー画像 -->
+    {heroImage && (
+      <div class="relative w-full h-96 mb-8 rounded-xl overflow-hidden shadow-2xl">
+        <img 
+          src={heroImage} 
+          alt={title}
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-end">
+          <div class="p-8 w-full">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-3 drop-shadow-lg">
+              {title}
+            </h1>
+            <p class="text-xl text-white/90 drop-shadow-md">
+              {description}
+            </p>
+          </div>
+        </div>
+      </div>
+    )}
+
     <!-- 記事ヘッダー -->
     <header class="mb-8">
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
-      <p class="text-xl text-gray-600 mb-4">{description}</p>
+      {!heroImage && (
+        <>
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+          <p class="text-xl text-gray-600 mb-4">{description}</p>
+        </>
+      )}
       
       <div class="flex items-center gap-4 text-sm text-gray-600">
         <time datetime={pubDate.toISOString()}>公開: {formattedPubDate}</time>

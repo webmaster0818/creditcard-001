@@ -6,6 +6,7 @@ updatedDate: 2026-03-19
 author: クレジットカード比較編集部
 tags: [クレジットカード切り替え, タイミング, 年会費, ポイント失効]
 featured: false
+heroImage: /images/heroes/switching-timing.jpg
 ---
 
 「クレジットカードを切り替えたいけど、いつがベストなタイミング？」

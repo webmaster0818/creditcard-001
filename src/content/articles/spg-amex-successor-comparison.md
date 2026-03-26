@@ -6,6 +6,7 @@ updatedDate: 2026-03-26
 author: クレジットカード比較編集部
 tags: [SPGアメックス, Marriott Bonvoy, ホテル系クレジットカード, マリオットアメックス]
 featured: false
+heroImage: /images/heroes/spg-successor.jpg
 ---
 
 SPGアメックスが2022年2月に新規募集を終了し、多くの旅行好きが後継カードを探しています。この記事では、SPGアメックスの後継として登場したMarriott Bonvoyカードシリーズと、その他の代替候補を徹底比較します。最適なカードを見つけるための判断材料を提供します。

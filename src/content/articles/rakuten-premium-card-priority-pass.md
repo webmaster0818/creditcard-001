@@ -6,6 +6,7 @@ updatedDate: 2026-03-17
 author: クレジットカード比較編集部
 tags: [楽天プレミアムカード, プライオリティパス, マリオットAMEX比較, コスパ最強]
 featured: false
+heroImage: /images/heroes/rakuten-premium-priority-pass.jpg
 ---
 
 「マリオットAMEXの年会費82,500円は高すぎる…もっとコスパの良いカードはないの？」

@@ -6,6 +6,7 @@ updatedDate: 2026-03-26
 author: クレジットカード比較編集部
 tags: [JALマイル, マイル還元率, JALカード, マイルが貯まるカード]
 featured: false
+heroImage: /images/heroes/jal-mile-ranking.jpg
 ---
 
 # JALマイル還元率が高いクレジットカードおすすめ8選｜効率的に貯める方法
