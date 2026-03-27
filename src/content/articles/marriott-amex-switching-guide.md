@@ -440,6 +440,18 @@ heroImage: /images/heroes/marriott-amex-switching.jpg
 
 ---
 
+## 関連記事
+
+切り替えを検討中の方は、こちらの記事も参考にしてください：
+
+- [クレジットカード年会費比較【2026年最新】](/articles/credit-card-annual-fee-comparison)
+- [プラチナカードおすすめランキング2026](/articles/platinum-cards-recommendation-2026)
+- [セゾンプラチナビジネス完全レビュー](/articles/saison-platinum-business-review)
+- [JAL vs ANAマイル完全比較](/articles/jal-vs-ana-mile-guide)
+- [ホテル系クレジットカード徹底比較](/articles/hotel-credit-card-comparison)
+
+---
+
 **この記事は2026年3月17日時点の情報です。カードの仕様や特典は変更される可能性があるため、申し込み前に各カード会社の公式サイトで最新情報をご確認ください。**
 
 ### 関連記事

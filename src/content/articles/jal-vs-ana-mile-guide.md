@@ -487,8 +487,9 @@ heroImage: /images/heroes/jal-vs-ana-mile.jpg
 
 ### 関連記事
 
+- [プラチナカードおすすめランキング2026](/articles/platinum-cards-recommendation-2026)
+- [クレジットカード年会費比較【2026年最新】](/articles/credit-card-annual-fee-comparison)
 - [セゾンプラチナビジネスでJALマイル還元率1.125%を実現する完全ガイド](/articles/sample-saison-jal-mile)
 - [アメックスゴールドプリファードでANAマイル1.0%還元！](/articles/amex-gold-preferred-ana-mile)
 - [マリオットボンヴォイAMEXから切り替えるべき？おすすめ代替カード5選](/articles/marriott-amex-switching-guide)
 - [決済額シミュレーターで最適なカードを診断](/simulator)
-- [カード比較表で5枚を一覧比較](/cards/comparison)

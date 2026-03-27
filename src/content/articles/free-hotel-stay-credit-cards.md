@@ -571,8 +571,9 @@ heroImage: /images/heroes/free-hotel-stay-cards.jpg
 
 ### 関連記事
 
+- [プラチナカードおすすめランキング2026](/articles/platinum-cards-recommendation-2026)
+- [クレジットカード年会費比較【2026年最新】](/articles/credit-card-annual-fee-comparison)
 - [ホテル系クレジットカード完全比較2026](/articles/hotel-credit-card-comparison)
 - [マリオットボンヴォイAMEXから切り替えるべき？おすすめ代替カード5選](/articles/marriott-amex-switching-guide)
 - [ヒルトンオナーズAMEXを徹底レビュー！マリオットAMEXとの比較](/articles/hilton-amex-review)
 - [決済額シミュレーターで最適なカードを診断](/simulator)
-- [カード比較表で5枚を一覧比較](/cards/comparison)

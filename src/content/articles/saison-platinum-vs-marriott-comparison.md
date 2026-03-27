@@ -512,7 +512,8 @@ heroImage: /images/heroes/saison-platinum-vs-marriott.jpg
 ### 関連記事
 
 - [マリオットボンヴォイAMEXから切り替えるべき？おすすめ代替カード5選](/articles/marriott-amex-switching-guide)
+- [プラチナカードおすすめランキング2026](/articles/platinum-cards-recommendation-2026)
+- [クレジットカード年会費比較【2026年最新】](/articles/credit-card-annual-fee-comparison)
 - [セゾンプラチナビジネスでJALマイル還元率1.125%を実現する完全ガイド](/articles/sample-saison-jal-mile)
 - [ヒルトンオナーズAMEXを徹底レビュー！マリオットAMEXとの比較](/articles/hilton-amex-review)
 - [決済額シミュレーターで最適なカードを診断](/simulator)
-- [カード比較表で5枚を一覧比較](/cards/comparison)

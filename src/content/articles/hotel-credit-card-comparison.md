@@ -510,7 +510,8 @@ heroImage: /images/heroes/hotel-credit-card-comparison.jpg
 ### 関連記事
 
 - [マリオットボンヴォイAMEXから切り替えるべき？おすすめ代替カード5選](/articles/marriott-amex-switching-guide)
+- [プラチナカードおすすめランキング2026](/articles/platinum-cards-recommendation-2026)
+- [クレジットカード年会費比較【2026年最新】](/articles/credit-card-annual-fee-comparison)
 - [ヒルトンオナーズAMEXを徹底レビュー！マリオットAMEXとの比較](/articles/hilton-amex-review)
 - [セゾンプラチナビジネス vs マリオットAMEX徹底比較](/articles/saison-platinum-vs-marriott-comparison)
 - [決済額シミュレーターで最適なカードを診断](/simulator)
-- [カード比較表で5枚を一覧比較](/cards/comparison)
