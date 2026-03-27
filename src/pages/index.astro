@@ -10,97 +10,55 @@ const latestArticles = allArticles
 
 const featuredArticles = allArticles.filter((article) => article.data.featured);
 
-// カード情報（American Express風）
+// カード情報
 const cards = [
   {
-    id: 'saison-platinum-business',
+    id: 1,
     name: 'セゾンプラチナ・ビジネス・アメリカン・エキスプレス®・カード',
-    badge: 'あなたにご用意した特別な特典',
+    shortName: 'セゾンプラチナビジネス',
     annualFee: '年会費22,000円（税込）',
-    familyCard: '追加カード4枚まで無料',
-    bonus: '合計30,000ポイント獲得可能',
-    bonusDetail: 'ご入会およびカードご利用条件達成で合計30,000ポイント獲得可能',
+    pointRate: '1.125%（JALマイル）',
+    issueSpeed: '最短3営業日',
+    bonus: '最大30,000ポイント',
     features: [
-      { icon: '✈️', text: 'JALマイル還元率1.125%（SAISON MILE CLUB加入時）' },
-      { icon: '🏨', text: '世界1,400ヶ所以上のプライオリティ・パス' },
-      { icon: '💎', text: 'コンシェルジュサービス24時間対応' },
+      'JALマイル還元率1.125%',
+      'プライオリティ・パス無料',
+      'コンシェルジュサービス24時間',
     ],
-    image: '/images/saison-platinum-business.png',
+    badges: ['年会費永年無料', 'ETC発行', 'タッチ決済可能'],
+    cardImage: 'https://www.saisoncard.co.jp/images/platinum_amex.png',
   },
   {
-    id: 'amex-gold-preferred',
+    id: 2,
     name: 'アメリカン・エキスプレス®・ゴールド・プリファード・カード',
-    badge: '期間限定ご入会特典',
+    shortName: 'アメックスゴールド',
     annualFee: '年会費39,600円（税込）',
-    familyCard: '家族カード2枚まで無料、3枚目以降19,800円（税込）',
-    bonus: '合計130,000ポイント獲得可能',
-    bonusDetail: '【2026年5月26日(火)お申し込み分まで】ご入会およびカードご利用条件達成で合計130,000ポイント獲得可能',
+    pointRate: '1.0%～',
+    issueSpeed: '最短翌営業日',
+    bonus: '最大130,000ポイント',
     features: [
-      { icon: '✨', text: '洗練されたメタル製のカード' },
-      { icon: '🏨', text: '1年間で200万円以上のご利用で1泊2名分の無料宿泊券進呈' },
-      { icon: '🍽️', text: 'キャッシュバッグや割引などダイニング特典が充実' },
+      'メタル製カード',
+      '年間200万円利用で無料宿泊券',
+      'ダイニング特典充実',
     ],
-    image: '/images/amex-gold-preferred.png',
+    badges: ['年会費永年無料', 'ETC発行', 'タッチ決済可能'],
+    cardImage: 'https://www.americanexpress.com/content/dam/amex/jp/card/gold-preferred.png',
   },
   {
-    id: 'hilton-honors-amex',
+    id: 3,
     name: 'ヒルトン・オナーズ アメリカン・エキスプレス®・カード',
-    badge: '',
+    shortName: 'ヒルトンAMEX',
     annualFee: '年会費16,500円（税込）',
-    familyCard: '家族カード1枚目無料、2枚目以降6,600円（税込）',
-    bonus: 'ヒルトン・オナーズ・ゴールドステータス無条件付与',
-    bonusDetail: 'ヒルトン・オナーズ・ゴールドステータスを無条件でご提供',
+    pointRate: '最大3.0%',
+    issueSpeed: '最短翌営業日',
+    bonus: 'ゴールドステータス付与',
     features: [
-      { icon: '🏨', text: 'カード利用と継続でウィークエンド無料宿泊プレゼント' },
-      { icon: '⭐', text: 'ヒルトン・オナーズ・ゴールドステータスを無条件でご提供' },
-      { icon: '💎', text: 'カードご利用100円につき最大3ポイント貯まる' },
+      'ヒルトンゴールド自動付帯',
+      '無料宿泊特典',
+      '100円=3ポイント',
     ],
-    image: '/images/hilton-honors-amex.png',
-  },
-  {
-    id: 'ana-amex-gold',
-    name: 'ANA アメリカン・エキスプレス®・ゴールド・カード',
-    badge: '期間限定ご入会特典',
-    annualFee: '年会費34,100円（税込）',
-    familyCard: '家族カード17,050円（税込）',
-    bonus: '合計100,000マイル相当獲得可能',
-    bonusDetail: '【2026年4月14日（火）お申し込み分まで】',
-    features: [
-      { icon: '♾️', text: 'ポイントの有効期間は無期限' },
-      { icon: '✈️', text: 'ANAグループでのカードご利用はポイント2倍' },
-      { icon: '🎁', text: '毎年のカード継続毎に2,000マイルプレゼント' },
-    ],
-    image: '/images/ana-amex-gold.png',
-  },
-  {
-    id: 'marriott-bonvoy-amex',
-    name: 'Marriott Bonvoy® アメリカン・エキスプレス®・プレミアム・カード',
-    badge: '期間限定ご入会特典',
-    annualFee: '年会費82,500 円（税込）',
-    familyCard: '家族カード1枚無料／2枚目以降41,250円 (税込)',
-    bonus: '合計115,000 Marriott Bonvoy ポイント獲得可能',
-    bonusDetail: '【2026年4月14日（火）お申し込み分まで】ご入会およびカードご利用条件達成で合計115,000 Marriott Bonvoy ポイント獲得可能',
-    features: [
-      { icon: '🏨', text: '毎年のカードご継続と条件達成で無料宿泊特典プレゼント' },
-      { icon: '⭐', text: 'ご入会でMarriott Bonvoy「ゴールドエリート」会員資格を自動的に付与' },
-      { icon: '👨‍👩‍👧', text: '家族カード1枚目無料' },
-    ],
-    image: '/images/marriott-bonvoy-amex.png',
-  },
-  {
-    id: 'jal-card-platinum',
-    name: 'JALカード プラチナ',
-    badge: '',
-    annualFee: '年会費34,100円（税込）',
-    familyCard: '家族カード17,050円（税込）',
-    bonus: '合計5,000マイル獲得可能',
-    bonusDetail: 'ご入会ボーナスマイルとファーストフライトボーナスマイルで合計5,000マイル獲得可能',
-    features: [
-      { icon: '✈️', text: 'JALマイル還元率1.0%' },
-      { icon: '🏨', text: 'プライオリティ・パス無料' },
-      { icon: '💎', text: 'プラチナ・コンシェルジュサービス' },
-    ],
-    image: '/images/jal-card-platinum.png',
+    badges: ['年会費無料', 'ETC発行', 'タッチ決済可能'],
+    cardImage: 'https://www.americanexpress.com/content/dam/amex/jp/card/hilton-honors.png',
   },
 ];
 
@@ -112,38 +70,6 @@ const websiteSchema = {
   description: 'マリオットボンヴォイAMEXからの切り替えをサポートする専門サイト',
   url: Astro.site?.toString(),
 };
-
-// FAQスキーマ
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'マリオットAMEXから切り替えるべきカードは？',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'JALマイル重視ならセゾンプラチナビジネス、ANAマイル重視ならアメックスゴールドプリファード、ホテル特典重視ならヒルトンAMEXがおすすめです。',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'マリオットAMEXの年会費はいくら？',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: '2025年8月以降、マリオットボンヴォイAMEXプレミアムの年会費は82,500円です。',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'セゾンプラチナビジネスのJALマイル還元率は？',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'SAISON MILE CLUB登録で1.125%のJALマイル還元率を実現できます。',
-      },
-    },
-  ],
-};
 ---
 
 <BaseLayout 
@@ -152,150 +78,248 @@ const faqSchema = {
 >
   <!-- 構造化データ -->
   <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
-  <!-- ヒーローセクション（American Express風） -->
-  <section class="relative bg-gradient-to-r from-[#003087] to-[#004B9D] text-white overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <!-- 左側：テキスト -->
-        <div class="z-10">
-          <h1 class="text-3xl lg:text-5xl font-bold mb-4 leading-tight">
-            ゴールドで味わう<br />
-            信頼と多彩なサービス<br />
-            ワンランク上の経験を
-          </h1>
-          <p class="text-lg lg:text-xl text-blue-100 mb-6">
-            マリオットAMEXからの切り替えをサポート。あなたに最適なゴールドカードを見つけましょう。
-          </p>
+  <!-- ヒーローセクション（簡易検索） -->
+  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 lg:p-8">
+        <div class="flex items-center mb-6">
+          <div class="bg-yellow-400 rounded-full p-3 mr-4">
+            <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <h1 class="text-2xl lg:text-3xl font-bold">自分にぴったりなクレカをかんたん検索</h1>
         </div>
-        <!-- 右側：画像 -->
-        <div class="relative h-64 lg:h-96">
-          <img 
-            src="/images/hero-cards.png" 
-            alt="クレジットカード"
-            class="absolute right-0 top-0 h-full object-contain"
-            onerror="this.style.display='none'"
-          />
+        
+        <div class="bg-white rounded-lg p-6">
+          <div class="mb-4">
+            <p class="text-gray-900 font-semibold mb-4 flex items-center">
+              <span class="bg-blue-600 text-white px-3 py-1 rounded mr-3 text-sm">STEP 1</span>
+              <span class="text-lg">この中で重視するものは？</span>
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
+              <div class="text-3xl mb-2">⚡</div>
+              <div class="text-gray-900 font-medium text-sm">すぐに使える</div>
+            </button>
+            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
+              <div class="text-3xl mb-2">💰</div>
+              <div class="text-gray-900 font-medium text-sm">年会費永年無料</div>
+            </button>
+            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
+              <div class="text-3xl mb-2">💎</div>
+              <div class="text-gray-900 font-medium text-sm">還元率が高い</div>
+            </button>
+            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
+              <div class="text-3xl mb-2">🛡️</div>
+              <div class="text-gray-900 font-medium text-sm">保険が充実</div>
+            </button>
+            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
+              <div class="text-3xl mb-2">🚗</div>
+              <div class="text-gray-900 font-medium text-sm">ETCカード付帯</div>
+            </button>
+            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
+              <div class="text-3xl mb-2">💳</div>
+              <div class="text-gray-900 font-medium text-sm">分割払い可</div>
+            </button>
+          </div>
+          
+          <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition">
+            選択しないで次へ進む
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- タブナビゲーション（American Express風） -->
-  <section class="bg-white border-b border-gray-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex overflow-x-auto space-x-2 lg:space-x-4 py-4">
-        <button class="flex flex-col items-center min-w-[100px] lg:min-w-[140px] p-3 rounded-lg hover:bg-gray-50 transition">
-          <span class="text-2xl mb-1">🎴</span>
-          <span class="text-xs lg:text-sm font-medium text-gray-700">すべての<br />カード</span>
-        </button>
-        <button class="flex flex-col items-center min-w-[100px] lg:min-w-[140px] p-3 rounded-lg hover:bg-gray-50 transition">
-          <span class="text-2xl mb-1">💳</span>
-          <span class="text-xs lg:text-sm font-medium text-gray-700">スタンダード<br />カード</span>
-        </button>
-        <button class="flex flex-col items-center min-w-[100px] lg:min-w-[140px] p-3 rounded-lg bg-blue-50 border-2 border-blue-600 transition">
-          <span class="text-2xl mb-1">💎</span>
-          <span class="text-xs lg:text-sm font-bold text-blue-600">ゴールド<br />カード</span>
-        </button>
-        <button class="flex flex-col items-center min-w-[100px] lg:min-w-[140px] p-3 rounded-lg hover:bg-gray-50 transition">
-          <span class="text-2xl mb-1">👑</span>
-          <span class="text-xs lg:text-sm font-medium text-gray-700">プレミアム<br />カード</span>
-        </button>
-        <button class="flex flex-col items-center min-w-[100px] lg:min-w-[140px] p-3 rounded-lg hover:bg-gray-50 transition">
-          <span class="text-2xl mb-1">💼</span>
-          <span class="text-xs lg:text-sm font-medium text-gray-700">ビジネス<br />カード</span>
-        </button>
-        <button class="flex flex-col items-center min-w-[100px] lg:min-w-[140px] p-3 rounded-lg hover:bg-gray-50 transition">
-          <span class="text-2xl mb-1">✈️</span>
-          <span class="text-xs lg:text-sm font-medium text-gray-700">航空会社<br />提携カード</span>
-        </button>
-        <button class="flex flex-col items-center min-w-[100px] lg:min-w-[140px] p-3 rounded-lg hover:bg-gray-50 transition">
-          <span class="text-2xl mb-1">🏨</span>
-          <span class="text-xs lg:text-sm font-medium text-gray-700">ホテル<br />提携カード</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- カード一覧（American Express風：縦1列レイアウト） -->
+  <!-- 比較テーブル（3カラム横並び） -->
   <section class="bg-gray-50 py-12">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-lg text-gray-700 mb-8">{cards.length} 枚のカードがあなたの選択に一致します</p>
-      
-      <div class="space-y-8">
-        {cards.map((card) => (
-          <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
-            {card.badge && (
-              <div class="bg-yellow-400 text-gray-900 px-4 py-2 text-sm font-semibold">
-                {card.badge}
-              </div>
-            )}
-            <div class="p-6 lg:p-8">
-              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- 左：カード画像 -->
-                <div class="lg:col-span-1 flex flex-col items-center lg:items-start">
-                  <div class="w-64 h-40 bg-gradient-to-br from-gray-800 to-gray-600 rounded-lg shadow-lg mb-4 flex items-center justify-center">
-                    <img 
-                      src={card.image} 
-                      alt={card.name}
-                      class="w-full h-full object-cover rounded-lg"
-                      onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-white text-sm>カード画像</span>'"
-                    />
+      <div class="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-4 mb-8">
+        <p class="text-center text-gray-900 font-semibold">
+          おすすめカード TOP3
+        </p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full bg-white rounded-lg shadow-md">
+          <thead>
+            <tr class="border-b">
+              {cards.map((card) => (
+                <th class="p-4 text-center">
+                  <div class="w-48 h-32 mx-auto bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg flex items-center justify-center mb-3">
+                    <span class="text-white text-xs">{card.shortName}</span>
                   </div>
-                  <a 
-                    href={`/cards/${card.id}`} 
-                    class="text-blue-600 font-semibold hover:underline mb-2 text-center lg:text-left"
-                  >
-                    詳しくはこちら →
+                </th>
+              ))}
+            </tr>
+            <tr class="border-b bg-gray-50">
+              {cards.map((card) => (
+                <td class="p-4 text-center">
+                  <a href="#" class="text-blue-600 font-semibold hover:underline">{card.shortName}</a>
+                </td>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b">
+              <td colspan="3" class="p-3 bg-blue-50 text-center font-semibold text-gray-900">年会費</td>
+            </tr>
+            <tr class="border-b">
+              {cards.map((card) => (
+                <td class="p-4 text-center text-sm">{card.annualFee}</td>
+              ))}
+            </tr>
+            
+            <tr class="border-b">
+              <td colspan="3" class="p-3 bg-blue-50 text-center font-semibold text-gray-900">発行スピード</td>
+            </tr>
+            <tr class="border-b">
+              {cards.map((card) => (
+                <td class="p-4 text-center text-sm">{card.issueSpeed}</td>
+              ))}
+            </tr>
+            
+            <tr class="border-b">
+              <td colspan="3" class="p-3 bg-blue-50 text-center font-semibold text-gray-900">ポイント還元率</td>
+            </tr>
+            <tr class="border-b">
+              {cards.map((card) => (
+                <td class="p-4 text-center text-sm">{card.pointRate}</td>
+              ))}
+            </tr>
+            
+            <tr class="border-b">
+              <td colspan="3" class="p-3 bg-blue-50 text-center font-semibold text-gray-900">入会特典</td>
+            </tr>
+            <tr class="border-b">
+              {cards.map((card) => (
+                <td class="p-4 text-center text-sm font-semibold text-blue-600">{card.bonus}</td>
+              ))}
+            </tr>
+            
+            <tr>
+              {cards.map((card) => (
+                <td class="p-4 text-center">
+                  <a href={`/cards/${card.id}`} class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded transition">
+                    公式サイトへ
                   </a>
-                  <button class="w-full bg-blue-600 text-white px-6 py-2 rounded font-semibold hover:bg-blue-700 transition">
-                    他のカードと比較する
-                  </button>
-                </div>
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-                <!-- 右：カード詳細 -->
-                <div class="lg:col-span-2">
-                  <h3 class="text-xl lg:text-2xl font-bold text-gray-900 mb-3">
-                    {card.name}
-                  </h3>
-                  <div class="text-sm text-gray-700 mb-4 space-y-1">
-                    <p>{card.annualFee}</p>
-                    <p>{card.familyCard}</p>
-                  </div>
-                  
-                  {card.bonus && (
-                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                      <p class="text-xs text-blue-700 font-semibold mb-1">ご入会特典</p>
-                      <p class="text-lg font-bold text-blue-900 mb-1">{card.bonus}</p>
-                      <p class="text-xs text-gray-600">{card.bonusDetail}</p>
-                    </div>
-                  )}
+  <!-- ランキング（縦1列） -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex items-center mb-8">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='40' viewBox='0 0 100 40'%3E%3Ctext x='10' y='30' font-size='24' font-weight='bold' fill='%23003087'%3Eランキング%3C/text%3E%3C/svg%3E" alt="ランキング" class="mr-4" />
+    </div>
 
-                  <!-- カードの特長 -->
-                  <div class="mt-6">
-                    <p class="text-sm font-semibold text-gray-700 mb-3">カードの特長</p>
-                    <ul class="space-y-3">
-                      {card.features.map((feature) => (
-                        <li class="flex items-start">
-                          <span class="text-2xl mr-3 flex-shrink-0">{feature.icon}</span>
-                          <span class="text-sm text-gray-700 pt-1">{feature.text}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+    <div class="space-y-8">
+      {cards.map((card, index) => (
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <!-- バッジ -->
+          {index === 0 && (
+            <div class="bg-yellow-400 text-gray-900 px-4 py-2 text-sm font-semibold">
+              【新規入会】当サイトからのお申し込み特典あり！
+            </div>
+          )}
+          
+          <div class="p-6 lg:p-8">
+            <!-- ランキング番号 -->
+            <div class="flex items-start mb-4">
+              <div class="bg-red-500 text-white text-2xl font-bold w-12 h-12 rounded flex items-center justify-center mr-4 flex-shrink-0">
+                {index + 1}
+              </div>
+              <div class="flex-grow">
+                <h2 class="text-xl lg:text-2xl font-bold text-gray-900 mb-2">
+                  <a href={`/cards/${card.id}`} class="hover:text-blue-600">{card.name}</a>
+                </h2>
+                <p class="text-gray-600 text-sm">{card.features[0]}</p>
               </div>
             </div>
+
+            <!-- カード画像とスペック -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <!-- カード画像 -->
+              <div class="lg:col-span-1">
+                <div class="w-full aspect-[3/2] bg-gradient-to-br from-gray-800 to-gray-600 rounded-lg shadow-lg flex items-center justify-center">
+                  <span class="text-white text-sm">{card.shortName}</span>
+                </div>
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {card.badges.map((badge) => (
+                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">{badge}</span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- スペック -->
+              <div class="lg:col-span-2">
+                <table class="w-full">
+                  <tbody>
+                    <tr class="border-b">
+                      <th class="text-left py-3 pr-4 text-sm font-semibold text-gray-700 w-1/3">年会費</th>
+                      <td class="py-3 text-sm">{card.annualFee}</td>
+                    </tr>
+                    <tr class="border-b">
+                      <th class="text-left py-3 pr-4 text-sm font-semibold text-gray-700">ポイント還元率</th>
+                      <td class="py-3 text-sm">{card.pointRate}</td>
+                    </tr>
+                    <tr class="border-b">
+                      <th class="text-left py-3 pr-4 text-sm font-semibold text-gray-700">発行スピード</th>
+                      <td class="py-3 text-sm">{card.issueSpeed}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- おすすめポイント -->
+            <div class="mt-6 bg-gray-50 rounded-lg p-4">
+              <p class="font-semibold text-gray-900 mb-3 cursor-pointer">おすすめな理由</p>
+              <ul class="space-y-2">
+                {card.features.map((feature) => (
+                  <li class="flex items-start">
+                    <span class="text-blue-600 mr-2">✓</span>
+                    <span class="text-sm text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- 入会特典 -->
+            <div class="mt-6 bg-yellow-50 border border-yellow-300 rounded-lg p-4">
+              <p class="text-xs text-gray-600 font-semibold mb-1">新規ご入会特典</p>
+              <p class="text-lg font-bold text-gray-900">{card.bonus}</p>
+            </div>
+
+            <!-- CTA -->
+            <div class="mt-6 flex gap-4">
+              <a href={`/cards/${card.id}`} class="flex-1 bg-red-500 hover:bg-red-600 text-white text-center font-bold py-4 rounded-lg transition">
+                公式サイトを見る
+              </a>
+              <a href={`/cards/${card.id}`} class="flex-1 border-2 border-gray-300 hover:border-blue-600 text-gray-700 hover:text-blue-600 text-center font-semibold py-4 rounded-lg transition">
+                もっと詳細を見る＞
+              </a>
+            </div>
+
+            <p class="text-xs text-gray-500 mt-4 text-center">PR：発行元</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   </section>
 
   <!-- 最新記事セクション -->
   {latestArticles.length > 0 && (
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
       <h2 class="text-3xl font-bold text-gray-900 mb-8">📰 最新記事</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {latestArticles.map((article) => (
@@ -316,32 +340,6 @@ const faqSchema = {
           </a>
         ))}
       </div>
-      
-      <div class="text-center mt-8">
-        <a href="/articles" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
-          記事一覧を見る
-        </a>
-      </div>
     </section>
   )}
-
-  <!-- CTAセクション -->
-  <section class="bg-gradient-to-r from-[#003087] to-[#004B9D] text-white py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold mb-4">
-        💡 あなたに最適なカードを見つけよう
-      </h2>
-      <p class="text-xl text-blue-100 mb-8">
-        年間決済額を入力するだけで、実質コストを自動計算。最適なカードを診断します。
-      </p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a href="/simulator" class="inline-block bg-yellow-400 text-gray-900 px-10 py-4 rounded-lg font-bold text-lg hover:bg-yellow-300 transition shadow-lg">
-          💳 診断ツールを使う（無料）
-        </a>
-        <a href="/cards/comparison" class="inline-block bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition">
-          📊 カード比較表を見る
-        </a>
-      </div>
-    </div>
-  </section>
 </BaseLayout>
