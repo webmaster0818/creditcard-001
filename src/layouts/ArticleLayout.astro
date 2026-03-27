@@ -190,7 +190,7 @@ const articleSchema = {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         {relatedArticles.map((relatedArticle) => (
           <a 
-            href={`/articles/${relatedArticle.id.replace('.md', '')}`}
+            href={`/articles/${relatedArticle.slug}`}
             class="block bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
           >
             <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
