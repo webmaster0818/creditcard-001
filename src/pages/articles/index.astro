@@ -6,6 +6,21 @@ const allArticles = await getCollection('articles');
 const sortedArticles = allArticles.sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
+
+// カテゴリ別に記事を分類
+const featuredArticles = allArticles.filter((article) => article.data.featured);
+const regularArticles = allArticles.filter((article) => !article.data.featured);
+
+// タグごとの記事数をカウント
+const tagCounts = new Map();
+allArticles.forEach((article) => {
+  article.data.tags.forEach((tag) => {
+    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+  });
+});
+const topTags = Array.from(tagCounts.entries())
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 10);
 ---
 
 <BaseLayout 
@@ -41,7 +56,84 @@ const sortedArticles = allArticles.sort(
         <li class="text-gray-900" aria-current="page">記事一覧</li>
       </ol>
     </nav>
-    <h1 class="text-4xl font-bold text-gray-900 mb-8">📰 記事一覧</h1>
+    
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">📰 記事一覧</h1>
+      <p class="text-lg text-gray-600">
+        全<strong class="text-blue-600">{allArticles.length}記事</strong>を掲載。マリオットAMEX切り替えやクレジットカード選びに役立つ情報をお届けします。
+      </p>
+    </div>
+
+    <!-- タグフィルター -->
+    <div class="mb-8 bg-gray-50 p-6 rounded-lg">
+      <h2 class="text-lg font-semibold text-gray-900 mb-3">🏷️ カテゴリから探す</h2>
+      <div class="flex flex-wrap gap-2">
+        <a href="/articles" class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition">
+          すべて ({allArticles.length})
+        </a>
+        {topTags.map(([tag, count]) => (
+          <a href={`/articles?tag=${encodeURIComponent(tag)}`} class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition border border-gray-300">
+            #{tag} ({count})
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- 注目記事 -->
+    {featuredArticles.length > 0 && (
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">⭐ 注目記事</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {featuredArticles.map((article) => (
+            <a href={`/articles/${article.slug}`} class="group">
+              <article class="bg-gradient-to-br from-blue-50 to-white rounded-lg shadow-md hover:shadow-xl transition h-full flex flex-col border-2 border-blue-200">
+                <div class="p-6 flex-1">
+                  <div class="flex items-center gap-2 text-sm text-gray-600 mb-3">
+                    <span class="bg-yellow-400 text-yellow-900 px-2 py-1 rounded text-xs font-bold">注目</span>
+                    <time datetime={article.data.pubDate.toISOString()}>
+                      {article.data.pubDate.toLocaleDateString('ja-JP', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </time>
+                  </div>
+                  
+                  {article.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mb-3">
+                      {article.data.tags.slice(0, 3).map((tag) => (
+                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  
+                  <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition">
+                    {article.data.title}
+                  </h2>
+                  
+                  <p class="text-gray-600 text-sm line-clamp-3">
+                    {article.data.description}
+                  </p>
+                </div>
+                
+                <div class="px-6 pb-6">
+                  <span class="text-blue-600 font-semibold text-sm group-hover:underline">
+                    続きを読む →
+                  </span>
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- 全記事一覧 -->
+    <div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">📋 全記事一覧</h2>
+    </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {sortedArticles.map((article) => (

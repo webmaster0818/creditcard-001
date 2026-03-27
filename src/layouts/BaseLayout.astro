@@ -60,7 +60,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <footer class="bg-gray-800 text-white mt-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <h3 class="text-lg font-semibold mb-4">クレジットカード比較</h3>
             <p class="text-gray-400 text-sm">
@@ -68,10 +68,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
             </p>
           </div>
           <div>
+            <h4 class="text-lg font-semibold mb-4">コンテンツ</h4>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/articles" class="text-gray-400 hover:text-white">📰 記事一覧（全27記事）</a></li>
+              <li><a href="/cards/comparison" class="text-gray-400 hover:text-white">📊 カード比較表</a></li>
+              <li><a href="/simulator" class="text-gray-400 hover:text-white">💡 診断ツール</a></li>
+            </ul>
+          </div>
+          <div>
             <h4 class="text-lg font-semibold mb-4">人気記事</h4>
             <ul class="space-y-2 text-sm">
-              <li><a href="/marriott-amex-switching-guide" class="text-gray-400 hover:text-white">マリオットAMEX切り替えガイド</a></li>
-              <li><a href="/saison-platinum-business-jal-mile" class="text-gray-400 hover:text-white">セゾンプラチナビジネス完全ガイド</a></li>
+              <li><a href="/articles/marriott-amex-switching-guide" class="text-gray-400 hover:text-white">マリオットAMEX切り替えガイド</a></li>
+              <li><a href="/articles/saison-platinum-vs-marriott-comparison" class="text-gray-400 hover:text-white">セゾンプラチナビジネス完全ガイド</a></li>
+              <li><a href="/articles/hotel-credit-card-comparison" class="text-gray-400 hover:text-white">ホテル系カード完全比較</a></li>
             </ul>
           </div>
           <div>
