@@ -28,7 +28,67 @@ const relatedArticles = allArticles
   .filter(a => a.id !== article.id && a.data.tags.some(tag => tags.includes(tag)))
   .slice(0, 4);
 
-// パンくずリスト用のJSON-LD
+// タグから主要カテゴリを判定（優先度順）
+const categoryMap: { [key: string]: { name: string; slug: string; keywords: string[] } } = {
+  'marriott-amex': { 
+    name: 'マリオットAMEX', 
+    slug: 'marriott-amex',
+    keywords: ['マリオットAMEX', 'マリオットボンヴォイ', 'SPG', 'Marriott']
+  },
+  'jal-mile': { 
+    name: 'JALマイル', 
+    slug: 'jal-mile',
+    keywords: ['JALマイル', 'JAL', 'Japan Airlines']
+  },
+  'ana-mile': { 
+    name: 'ANAマイル', 
+    slug: 'ana-mile',
+    keywords: ['ANAマイル', 'ANA', 'All Nippon Airways']
+  },
+  'hotel-benefits': { 
+    name: 'ホテル特典', 
+    slug: 'hotel-benefits',
+    keywords: ['ホテル特典', 'ホテル', '無料宿泊', 'ヒルトン', 'プリンスホテル']
+  },
+  'platinum-card': { 
+    name: 'プラチナカード', 
+    slug: 'platinum-card',
+    keywords: ['プラチナカード', 'プラチナ', 'Platinum']
+  },
+  'gold-card': { 
+    name: 'ゴールドカード', 
+    slug: 'gold-card',
+    keywords: ['ゴールドカード', 'ゴールド', 'Gold']
+  },
+  'priority-pass': { 
+    name: 'プライオリティパス', 
+    slug: 'priority-pass',
+    keywords: ['プライオリティパス', 'Priority Pass', '空港ラウンジ']
+  },
+  'annual-fee-free': { 
+    name: '年会費無料カード', 
+    slug: 'annual-fee-free',
+    keywords: ['年会費無料', '年会費', '無料']
+  },
+};
+
+// タグとタイトルからカテゴリを判定
+let primaryCategory = null;
+const tagsAndTitle = [...tags, title].join(' ');
+
+for (const [key, category] of Object.entries(categoryMap)) {
+  if (category.keywords.some(kw => tagsAndTitle.includes(kw))) {
+    primaryCategory = category;
+    break;
+  }
+}
+
+// カテゴリがない場合はデフォルト
+if (!primaryCategory) {
+  primaryCategory = { name: 'クレジットカード比較', slug: 'cards', keywords: [] };
+}
+
+// パンくずリスト用のJSON-LD（カテゴリを含む4階層）
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -42,12 +102,18 @@ const breadcrumbSchema = {
     {
       '@type': 'ListItem',
       position: 2,
-      name: '記事一覧',
+      name: 'クレジットカード比較',
       item: new URL('/articles', Astro.site).toString(),
     },
     {
       '@type': 'ListItem',
       position: 3,
+      name: primaryCategory.name,
+      item: new URL(`/articles?tag=${encodeURIComponent(primaryCategory.slug)}`, Astro.site).toString(),
+    },
+    {
+      '@type': 'ListItem',
+      position: 4,
       name: title,
       item: new URL(Astro.url.pathname, Astro.site).toString(),
     },
@@ -86,7 +152,7 @@ const articleSchema = {
   <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <!-- パンくずリスト -->
     <nav class="text-sm text-gray-600 mb-6" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-2" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <ol class="flex flex-wrap items-center gap-2" itemscope itemtype="https://schema.org/BreadcrumbList">
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/" itemprop="item" class="hover:text-blue-600">
             <span itemprop="name">ホーム</span>
@@ -96,14 +162,21 @@ const articleSchema = {
         <li class="text-gray-400">/</li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           <a href="/articles" itemprop="item" class="hover:text-blue-600">
-            <span itemprop="name">記事一覧</span>
+            <span itemprop="name">クレジットカード比較</span>
           </a>
           <meta itemprop="position" content="2" />
         </li>
         <li class="text-gray-400">/</li>
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          <span itemprop="name" class="text-gray-900" aria-current="page">{title}</span>
+          <a href={`/articles?tag=${encodeURIComponent(primaryCategory.slug)}`} itemprop="item" class="hover:text-blue-600">
+            <span itemprop="name">{primaryCategory.name}</span>
+          </a>
           <meta itemprop="position" content="3" />
+        </li>
+        <li class="text-gray-400">/</li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <span itemprop="name" class="text-gray-900 font-semibold" aria-current="page">{title}</span>
+          <meta itemprop="position" content="4" />
         </li>
       </ol>
     </nav>
