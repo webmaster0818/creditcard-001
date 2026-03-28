@@ -233,4 +233,17 @@ const articleSchema = {
     </div>
   </section>
 
+  <!-- Lazyload script for article images -->
+  <script>
+    // Add loading="lazy" to all images in article content
+    document.addEventListener('DOMContentLoaded', () => {
+      const articleImages = document.querySelectorAll('.prose img');
+      articleImages.forEach((img) => {
+        if (!img.hasAttribute('loading')) {
+          img.setAttribute('loading', 'lazy');
+        }
+      });
+    });
+  </script>
+
 </BaseLayout>

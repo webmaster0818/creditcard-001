@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://creditcard-switch.com', // TODO: 実際のドメインに変更
+  site: 'https://creditcard-001.vercel.app',
   vite: {
     plugins: [tailwindcss()]
   },
@@ -14,6 +14,11 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       theme: 'github-dark',
+    },
+  },
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
     },
   },
 });

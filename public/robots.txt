@@ -1,0 +1,15 @@
+# robots.txt for creditcard-001.vercel.app
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://creditcard-001.vercel.app/sitemap-index.xml
+Sitemap: https://creditcard-001.vercel.app/sitemap-0.xml
+
+# Disallow admin/private paths (if any in future)
+# Disallow: /admin/
+# Disallow: /api/
+
+# Crawl-delay (optional, for aggressive bots)
+# Crawl-delay: 1
