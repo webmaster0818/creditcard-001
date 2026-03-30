@@ -12,6 +12,7 @@ const articlesCollection = defineCollection({
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     image: z.string().optional(),
+    heroImage: z.string().optional(),
     imageAlt: z.string().optional(),
   }),
 });
