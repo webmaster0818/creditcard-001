@@ -1,214 +1,424 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クレジットカード比較【2026年最新】おすすめランキング・診断ツール付き</title>
+  <meta name="description" content="【2026年3月最新】クレジットカードおすすめランキングTOP3を徹底比較。セゾンプラチナビジネス・アメックスゴールド・ヒルトンAMEXの年会費・還元率・特典をわかりやすく解説。3ステップ診断ツールであなたにぴったりの1枚が見つかります。">
+  <meta name="keywords" content="クレジットカード,比較,おすすめ,ランキング,2026,セゾンプラチナビジネス,アメックスゴールド,ヒルトンAMEX,年会費,還元率,マイル">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="date" content="2026-03-30">
+  <meta name="revised" content="2026-03-30">
+  <link rel="canonical" href="https://creditcard-001.pages.dev/">
+  <meta name="author" content="クレジットカード比較編集部">
+  <meta http-equiv="content-language" content="ja">
+  <link rel="alternate" hreflang="ja" href="https://creditcard-001.pages.dev/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23006FCF'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white'>💳</text></svg>">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 
-// 最新記事を取得
-const allArticles = await getCollection('articles');
-const latestArticles = allArticles
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 6);
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://creditcard-001.pages.dev/">
+  <meta property="og:title" content="クレジットカード比較【2026年最新】おすすめランキング・診断ツール付き">
+  <meta property="og:description" content="2026年最新版クレジットカードおすすめランキングTOP3を徹底比較。3ステップ診断ツールであなたにぴったりの1枚が見つかります。">
+  <meta property="og:site_name" content="クレジットカード比較">
 
-const featuredArticles = allArticles.filter((article) => article.data.featured);
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="クレジットカード比較【2026年最新】おすすめランキング・診断ツール付き">
+  <meta name="twitter:description" content="2026年最新版クレジットカードおすすめランキングTOP3を徹底比較。3ステップ診断であなたにぴったりの1枚が見つかります。">
 
-// カード情報
-const cards = [
-  {
-    id: 1,
-    name: 'セゾンプラチナ・ビジネス・アメリカン・エキスプレス®・カード',
-    shortName: 'セゾンプラチナビジネス',
-    annualFee: '年会費22,000円（税込）',
-    pointRate: '1.125%（JALマイル）',
-    issueSpeed: '最短3営業日',
-    bonus: '最大30,000ポイント',
-    features: [
-      'JALマイル還元率1.125%',
-      'プライオリティ・パス無料',
-      'コンシェルジュサービス24時間',
-    ],
-    badges: ['年会費永年無料', 'ETC発行', 'タッチ決済可能'],
-    cardImage: 'https://www.saisoncard.co.jp/images/platinum_amex.png',
-  },
-  {
-    id: 2,
-    name: 'アメリカン・エキスプレス®・ゴールド・プリファード・カード',
-    shortName: 'アメックスゴールド',
-    annualFee: '年会費39,600円（税込）',
-    pointRate: '1.0%～',
-    issueSpeed: '最短翌営業日',
-    bonus: '最大130,000ポイント',
-    features: [
-      'メタル製カード',
-      '年間200万円利用で無料宿泊券',
-      'ダイニング特典充実',
-    ],
-    badges: ['年会費永年無料', 'ETC発行', 'タッチ決済可能'],
-    cardImage: 'https://www.americanexpress.com/content/dam/amex/jp/card/gold-preferred.png',
-  },
-  {
-    id: 3,
-    name: 'ヒルトン・オナーズ アメリカン・エキスプレス®・カード',
-    shortName: 'ヒルトンAMEX',
-    annualFee: '年会費16,500円（税込）',
-    pointRate: '最大3.0%',
-    issueSpeed: '最短翌営業日',
-    bonus: 'ゴールドステータス付与',
-    features: [
-      'ヒルトンゴールド自動付帯',
-      '無料宿泊特典',
-      '100円=3ポイント',
-    ],
-    badges: ['年会費無料', 'ETC発行', 'タッチ決済可能'],
-    cardImage: 'https://www.americanexpress.com/content/dam/amex/jp/card/hilton-honors.png',
-  },
-];
+  <link rel="dns-prefetch" href="https://unpkg.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&display=swap" as="style">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            amex: {
+              navy: '#00175a',
+              blue: '#006FCF',
+              lightblue: '#E6F0FA',
+              gold: '#B8860B',
+              darkgold: '#8B6914',
+            }
+          },
+          fontFamily: {
+            sans: ['Noto Sans JP', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; }
 
-// WebSite構造化データ
-const websiteSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'クレジットカード比較',
-  description: 'マリオットボンヴォイAMEXからの切り替えをサポートする専門サイト',
-  url: Astro.site?.toString(),
-};
----
+    /* Navbar scroll effect */
+    .navbar { transition: box-shadow 0.3s, background-color 0.3s; }
+    .navbar::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,#8b5cf6,#006FCF,#06b6d4); opacity:0; transition:opacity 0.3s; }
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(0,23,90,0.08); }
+    .navbar.scrolled::after { opacity:1; }
 
-<BaseLayout 
-  title="クレジットカード比較 | マリオットAMEX切り替えガイド"
-  description="マリオットボンヴォイAMEXからの切り替えをサポート。セゾンプラチナビジネス、アメックスゴールドなど最適なカードを徹底比較。"
->
-  <!-- 構造化データ -->
-  <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+    /* Card hover */
+    .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,23,90,0.15); }
 
-  <!-- ヒーローセクション（簡易検索） -->
-  <section class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6 lg:p-8">
-        <div class="flex items-center mb-6">
-          <div class="bg-yellow-400 rounded-full p-3 mr-4">
-            <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    /* Button hover */
+    .btn-primary { transition: all 0.3s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,111,207,0.4); }
+
+    /* Selection chip */
+    .chip { transition: all 0.25s; }
+    .chip.selected { border-color: #006FCF !important; background: #E6F0FA !important; }
+    .chip.selected .chip-icon { transform: scale(1.15); }
+
+    /* Accordion */
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .accordion-content.open { max-height: 600px; }
+
+    /* Fade in animation */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* Progress steps */
+    .step-indicator { transition: all 0.3s; }
+    .step-indicator.active { background: #006FCF; color: white; }
+    .step-indicator.done { background: #00875a; color: white; }
+
+    /* Gradient card images */
+    .card-img-saison { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+    .card-img-amex { background: linear-gradient(135deg, #b8860b 0%, #d4a843 40%, #f0d77b 100%); }
+    .card-img-hilton { background: linear-gradient(135deg, #003580 0%, #0056b3 50%, #4da6ff 100%); }
+
+    /* Sticky comparison header */
+    .sticky-header th { position: sticky; top: 0; z-index: 10; }
+
+    /* Mobile menu */
+    .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease; }
+    .mobile-menu.open { transform: translateX(0); }
+
+    /* Breadcrumb */
+    .breadcrumb a:hover { color: #006FCF; }
+
+    /* Nav link underline animation */
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:linear-gradient(90deg,#8b5cf6,#006FCF); transition:width 0.3s; border-radius:2px; }
+    .nav-link:hover::after { width:100%; }
+
+    /* Scroll progress bar */
+    #scrollProgress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#8b5cf6,#006FCF,#06b6d4); z-index:9999; transition:width 0.1s; width:0%; }
+
+    /* Comparison table row hover */
+    .compare-row:hover td { background: #f0f7ff !important; }
+
+    /* Ranking number glow */
+    .rank-number { position:relative; }
+    .rank-number::after { content:''; position:absolute; inset:-4px; border-radius:16px; background:inherit; opacity:0.3; filter:blur(8px); z-index:-1; }
+
+    /* Pulse CTA */
+    @keyframes pulseGlow { 0%,100%{box-shadow:0 0 20px rgba(139,92,246,0.3)} 50%{box-shadow:0 0 40px rgba(139,92,246,0.5)} }
+    .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+
+    /* Chip selected checkmark */
+    .chip.selected::before { content:'✓'; position:absolute; top:8px; right:8px; width:20px; height:20px; background:linear-gradient(135deg,#8b5cf6,#006FCF); color:white; font-size:11px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+    .chip { position:relative; }
+
+    /* Feature badge shimmer */
+    @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
+    .shimmer { background-size:200% auto; animation: shimmer 3s linear infinite; }
+
+    /* Stat counter */
+    .stat-card { backdrop-filter:blur(10px); }
+  </style>
+</head>
+<body class="bg-white text-gray-900">
+  <noscript><style>.fade-up{opacity:1!important;transform:none!important}</style></noscript>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scrollProgress"></div>
+
+  <!-- Skip Navigation (A11y) -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-amex-blue focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">メインコンテンツへスキップ</a>
+
+  <!-- Navbar -->
+  <nav class="navbar fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-100" id="navbar" role="navigation" aria-label="メインナビゲーション">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16 lg:h-20">
+        <a href="/" class="flex items-center gap-2.5 group">
+          <div class="relative w-9 h-9 flex-shrink-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-violet-500 via-amex-blue to-cyan-400 rounded-xl shadow-md group-hover:scale-105 transition-transform"></div>
+            <svg class="absolute inset-0 w-9 h-9 p-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="4" width="22" height="16" rx="3" ry="3"/>
+              <line x1="1" y1="10" x2="23" y2="10"/>
             </svg>
           </div>
-          <h1 class="text-2xl lg:text-3xl font-bold">自分にぴったりなクレカをかんたん検索</h1>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amex-navy to-amex-blue font-black text-xl tracking-tight">クレジットカード比較</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#ranking" class="nav-link text-gray-600 hover:text-amex-blue font-medium text-sm transition">ランキング</a>
+          <a href="#comparison" class="nav-link text-gray-600 hover:text-amex-blue font-medium text-sm transition">カード比較</a>
+          <a href="/articles" class="nav-link text-gray-600 hover:text-amex-blue font-medium text-sm transition">記事一覧</a>
+          <a href="#faq" class="nav-link text-gray-600 hover:text-amex-blue font-medium text-sm transition">FAQ</a>
+          <a href="#about" class="nav-link text-gray-600 hover:text-amex-blue font-medium text-sm transition">運営情報</a>
+          <a href="#simulator" class="bg-gradient-to-r from-violet-600 to-amex-blue text-white px-6 py-2.5 rounded-full font-bold text-sm btn-primary shadow-md shadow-violet-500/20">
+            ✨ 診断する
+          </a>
         </div>
-        
-        <div class="bg-white rounded-lg p-6">
-          <div class="mb-4">
-            <p class="text-gray-900 font-semibold mb-4 flex items-center">
-              <span class="bg-blue-600 text-white px-3 py-1 rounded mr-3 text-sm">STEP 1</span>
-              <span class="text-lg">この中で重視するものは？</span>
+        <!-- Mobile hamburger -->
+        <button class="md:hidden p-2" onclick="toggleMobileMenu()" aria-label="メニューを開く" aria-expanded="false" id="menuBtn">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu fixed top-0 right-0 w-72 h-full bg-white shadow-2xl z-50 p-8" id="mobileMenu">
+      <button class="absolute top-4 right-4 p-2" onclick="toggleMobileMenu()" aria-label="メニューを閉じる">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <div class="flex flex-col gap-6 mt-12">
+        <a href="#ranking" class="text-gray-700 font-medium text-lg" onclick="toggleMobileMenu()">ランキング</a>
+        <a href="#comparison" class="text-gray-700 font-medium text-lg" onclick="toggleMobileMenu()">カード比較</a>
+        <a href="/articles" class="text-gray-700 font-medium text-lg" onclick="toggleMobileMenu()">記事一覧</a>
+        <a href="#faq" class="text-gray-700 font-medium text-lg" onclick="toggleMobileMenu()">FAQ</a>
+        <a href="#about" class="text-gray-700 font-medium text-lg" onclick="toggleMobileMenu()">運営情報</a>
+        <a href="#simulator" class="bg-gradient-to-r from-violet-600 to-amex-blue text-white px-5 py-3 rounded-full font-bold text-center shadow-md" onclick="toggleMobileMenu()">✨ 診断する</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Spacer for fixed nav -->
+  <div class="h-16 lg:h-20"></div>
+
+  <!-- Breadcrumb -->
+  <div class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <nav class="breadcrumb flex items-center gap-2 text-xs text-gray-500" aria-label="パンくずリスト">
+        <ol class="flex items-center gap-2" itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="/" itemprop="item" class="hover:text-amex-blue transition"><span itemprop="name">ホーム</span></a>
+            <meta itemprop="position" content="1">
+          </li>
+          <li aria-hidden="true">›</li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name" class="text-gray-700">クレジットカード比較</span>
+            <meta itemprop="position" content="2">
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main-content">
+
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e]" id="simulator">
+    <!-- Animated gradient blobs -->
+    <div class="absolute inset-0">
+      <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-gradient-to-br from-violet-500/30 to-fuchsia-500/20 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-[-15%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-tr from-cyan-400/25 to-blue-500/20 rounded-full blur-3xl animate-pulse" style="animation-delay:1s"></div>
+      <div class="absolute top-[40%] left-[50%] w-[300px] h-[300px] bg-gradient-to-br from-pink-500/15 to-orange-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay:2s"></div>
+    </div>
+    <!-- Subtle grid overlay -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-28">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full text-sm font-medium mb-8 border border-white/15">
+          <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span></span>
+          <span class="text-white/80">かんたん<span class="text-cyan-300 font-bold">3ステップ</span>で最適なカードが見つかる</span>
+        </div>
+        <!-- Illustration + headline row -->
+        <div class="flex flex-col lg:flex-row items-center justify-center gap-6 lg:gap-12">
+          <img src="/images/person-search.svg" alt="クレジットカードを探している人のイラスト" class="w-40 lg:w-52 hidden sm:block" style="filter: drop-shadow(0 4px 20px rgba(255,255,255,0.15));" width="208" height="242">
+          <div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.15] mb-6">
+              自分に<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-violet-300 to-fuchsia-300">ぴったり</span>な<br>クレカを見つけよう
+            </h1>
+            <p class="text-white/80 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+              あなたのライフスタイルに合った<span class="text-white/90 font-semibold">ベストな1枚</span>を、<br class="hidden sm:block">AIが診断します。
             </p>
           </div>
-          
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
-              <div class="text-3xl mb-2">⚡</div>
-              <div class="text-gray-900 font-medium text-sm">すぐに使える</div>
-            </button>
-            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
-              <div class="text-3xl mb-2">💰</div>
-              <div class="text-gray-900 font-medium text-sm">年会費永年無料</div>
-            </button>
-            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
-              <div class="text-3xl mb-2">💎</div>
-              <div class="text-gray-900 font-medium text-sm">還元率が高い</div>
-            </button>
-            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
-              <div class="text-3xl mb-2">🛡️</div>
-              <div class="text-gray-900 font-medium text-sm">保険が充実</div>
-            </button>
-            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
-              <div class="text-3xl mb-2">🚗</div>
-              <div class="text-gray-900 font-medium text-sm">ETCカード付帯</div>
-            </button>
-            <button class="bg-gray-50 hover:bg-blue-50 border-2 border-transparent hover:border-blue-600 rounded-lg p-4 text-center transition">
-              <div class="text-3xl mb-2">💳</div>
-              <div class="text-gray-900 font-medium text-sm">分割払い可</div>
-            </button>
+          <img src="/images/person-thumbsup.svg" alt="おすすめカードを紹介する人のイラスト" class="w-40 lg:w-52 hidden lg:block" style="filter: drop-shadow(0 4px 20px rgba(255,255,255,0.15));" width="208" height="242">
+        </div>
+
+        <!-- Trust badges -->
+        <div class="flex flex-wrap justify-center gap-6 mt-10">
+          <div class="stat-card flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2">
+            <span class="text-cyan-300 font-black text-lg">27</span>
+            <span class="text-white/70 text-xs font-medium">記事掲載</span>
           </div>
-          
-          <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition">
-            選択しないで次へ進む
+          <div class="stat-card flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2">
+            <span class="text-violet-300 font-black text-lg">50+</span>
+            <span class="text-white/70 text-xs font-medium">カード比較</span>
+          </div>
+          <div class="stat-card flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-5 py-2">
+            <span class="text-fuchsia-300 font-black text-lg">2026</span>
+            <span class="text-white/70 text-xs font-medium">年最新版</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diagnostic Tool -->
+      <div class="bg-white/95 backdrop-blur-xl rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.3)] p-6 lg:p-10 max-w-4xl mx-auto border border-white/20">
+        <!-- Steps indicator -->
+        <div class="flex items-center justify-center gap-3 mb-8">
+          <div class="step-indicator active w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold bg-gradient-to-br from-violet-500 to-amex-blue text-white shadow-lg shadow-violet-500/30" id="step1">1</div>
+          <div class="w-10 h-0.5 bg-gradient-to-r from-violet-300 to-gray-200 rounded-full"></div>
+          <div class="step-indicator w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 border-gray-200 text-gray-400" id="step2">2</div>
+          <div class="w-10 h-0.5 bg-gray-200 rounded-full"></div>
+          <div class="step-indicator w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold border-2 border-gray-200 text-gray-400" id="step3">3</div>
+        </div>
+
+        <p class="text-center font-black text-xl mb-1">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-amex-navy to-violet-600">重視するポイント</span>を選んでください
+        </p>
+        <p class="text-center text-gray-500 text-sm mb-8">複数選択OK ✌️ <span id="chipCount" class="hidden ml-1 bg-violet-100 text-violet-700 font-bold text-xs px-2 py-0.5 rounded-full"></span></p>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+          <button class="chip bg-white border-2 border-gray-200 rounded-xl p-5 text-center hover:border-amex-blue hover:bg-amex-lightblue group" onclick="toggleChip(this)">
+            <div class="chip-icon mb-3 transition flex justify-center"><i data-lucide="zap" class="w-9 h-9 text-amex-blue"></i></div>
+            <div class="text-gray-800 font-semibold text-sm group-hover:text-amex-navy">すぐに使える</div>
+            <div class="text-gray-500 text-xs mt-1">最短即日〜翌営業日</div>
+          </button>
+          <button class="chip bg-white border-2 border-gray-200 rounded-xl p-5 text-center hover:border-amex-blue hover:bg-amex-lightblue group" onclick="toggleChip(this)">
+            <div class="chip-icon mb-3 transition flex justify-center"><i data-lucide="badge-japanese-yen" class="w-9 h-9 text-amex-blue"></i></div>
+            <div class="text-gray-800 font-semibold text-sm group-hover:text-amex-navy">年会費無料</div>
+            <div class="text-gray-500 text-xs mt-1">0円で持てるカード</div>
+          </button>
+          <button class="chip bg-white border-2 border-gray-200 rounded-xl p-5 text-center hover:border-amex-blue hover:bg-amex-lightblue group" onclick="toggleChip(this)">
+            <div class="chip-icon mb-3 transition flex justify-center"><i data-lucide="trending-up" class="w-9 h-9 text-amex-blue"></i></div>
+            <div class="text-gray-800 font-semibold text-sm group-hover:text-amex-navy">還元率が高い</div>
+            <div class="text-gray-500 text-xs mt-1">1.0%以上の高還元</div>
+          </button>
+          <button class="chip bg-white border-2 border-gray-200 rounded-xl p-5 text-center hover:border-amex-blue hover:bg-amex-lightblue group" onclick="toggleChip(this)">
+            <div class="chip-icon mb-3 transition flex justify-center"><i data-lucide="shield-check" class="w-9 h-9 text-amex-blue"></i></div>
+            <div class="text-gray-800 font-semibold text-sm group-hover:text-amex-navy">保険が充実</div>
+            <div class="text-gray-500 text-xs mt-1">旅行・ショッピング</div>
+          </button>
+          <button class="chip bg-white border-2 border-gray-200 rounded-xl p-5 text-center hover:border-amex-blue hover:bg-amex-lightblue group" onclick="toggleChip(this)">
+            <div class="chip-icon mb-3 transition flex justify-center"><i data-lucide="car" class="w-9 h-9 text-amex-blue"></i></div>
+            <div class="text-gray-800 font-semibold text-sm group-hover:text-amex-navy">ETCカード付帯</div>
+            <div class="text-gray-500 text-xs mt-1">高速料金もお得</div>
+          </button>
+          <button class="chip bg-white border-2 border-gray-200 rounded-xl p-5 text-center hover:border-amex-blue hover:bg-amex-lightblue group" onclick="toggleChip(this)">
+            <div class="chip-icon mb-3 transition flex justify-center"><i data-lucide="split" class="w-9 h-9 text-amex-blue"></i></div>
+            <div class="text-gray-800 font-semibold text-sm group-hover:text-amex-navy">分割払い可</div>
+            <div class="text-gray-500 text-xs mt-1">柔軟な支払い方法</div>
           </button>
         </div>
+
+        <button class="w-full bg-gradient-to-r from-violet-600 via-amex-blue to-cyan-500 hover:from-violet-500 hover:via-blue-500 hover:to-cyan-400 text-white font-black py-5 rounded-2xl btn-primary text-lg pulse-glow tracking-wide" onclick="skipToResults()">
+          おすすめカードを見る →
+        </button>
+        <p class="text-center text-gray-400 text-xs mt-3 font-medium">🔒 個人情報の入力は不要です</p>
       </div>
     </div>
   </section>
 
-  <!-- 比較テーブル（3カラム横並び） -->
-  <section class="bg-gray-50 py-12">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-4 mb-8">
-        <p class="text-center text-gray-900 font-semibold">
-          おすすめカード TOP3
-        </p>
+  <!-- Comparison Table -->
+  <section class="bg-gray-50 py-16 lg:py-24" id="comparison">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 fade-up">
+      <div class="text-center mb-12">
+        <span class="inline-block bg-gradient-to-r from-violet-100 to-cyan-100 text-amex-blue font-bold text-xs tracking-wider uppercase px-4 py-1.5 rounded-full mb-3">COMPARISON</span>
+        <h2 class="text-3xl lg:text-5xl font-black text-amex-navy mt-2">おすすめカード <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-cyan-500">TOP3</span></h2>
+        <p class="text-gray-500 text-sm mt-3">スペック一覧で一目で比較 📊</p>
+        <div class="w-20 h-1.5 bg-gradient-to-r from-violet-500 to-cyan-400 mx-auto mt-5 rounded-full"></div>
       </div>
 
-      <div class="overflow-x-auto">
-        <table class="w-full bg-white rounded-lg shadow-md">
+      <p class="text-center text-gray-400 text-xs mb-3 md:hidden">← 横にスクロールできます →</p>
+      <div class="overflow-x-auto rounded-2xl shadow-lg bg-white">
+        <table class="w-full min-w-[700px]">
           <thead>
-            <tr class="border-b">
-              {cards.map((card) => (
-                <th class="p-4 text-center">
-                  <div class="w-48 h-32 mx-auto bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg flex items-center justify-center mb-3">
-                    <span class="text-white text-xs">{card.shortName}</span>
-                  </div>
-                </th>
-              ))}
-            </tr>
-            <tr class="border-b bg-gray-50">
-              {cards.map((card) => (
-                <td class="p-4 text-center">
-                  <a href="#" class="text-blue-600 font-semibold hover:underline">{card.shortName}</a>
-                </td>
-              ))}
+            <tr class="sticky-header">
+              <th class="bg-amex-navy p-5 text-center w-1/3 relative">
+                <span class="absolute -top-1 left-1/2 -translate-x-1/2 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[10px] font-bold px-3 py-0.5 rounded-b-lg shadow-md">🏆 1位</span>
+                <div class="card-saison-premium w-40 h-24 mx-auto rounded-lg mb-3 shadow-lg relative overflow-hidden">
+                  <div class="absolute inset-0 bg-gradient-to-br from-[#2d2d3f] via-[#3a3a5c] to-[#1a1a2e]"></div>
+                  <div class="absolute top-2 left-3 text-[6px] text-white/60 font-light tracking-[0.2em]">SAISON</div>
+                  <div class="absolute top-2 right-3 text-[5px] text-white/40 tracking-wider">AMERICAN EXPRESS</div>
+                  <div class="absolute bottom-6 left-3 text-[7px] text-white/80 font-bold tracking-wider">PLATINUM BUSINESS</div>
+                  <div class="absolute bottom-2 left-3 text-[5px] text-white/40">•••• •••• •••• ••••</div>
+                  <div class="absolute bottom-2 right-3 w-5 h-5 rounded-full bg-white/10 border border-white/20"></div>
+                </div>
+                <p class="text-white font-bold text-sm">セゾンプラチナビジネス</p>
+              </th>
+              <th class="bg-amex-navy p-5 text-center w-1/3 border-x border-white/10">
+                <img src="/images/amex-gold.png" alt="アメリカン・エキスプレス・ゴールド・プリファード・カードの券面画像" class="w-40 h-auto mx-auto rounded-lg mb-3 shadow-lg" loading="lazy" width="160" height="101">
+                <p class="text-white font-bold text-sm">アメックスゴールド</p>
+              </th>
+              <th class="bg-amex-navy p-5 text-center w-1/3">
+                <img src="/images/hilton-amex.png" alt="ヒルトン・オナーズ アメリカン・エキスプレス・カードの券面画像" class="w-40 h-auto mx-auto rounded-lg mb-3 shadow-lg" loading="lazy" width="160" height="101">
+                <p class="text-white font-bold text-sm">ヒルトンAMEX</p>
+              </th>
             </tr>
           </thead>
-          <tbody>
-            <tr class="border-b">
-              <td colspan="3" class="p-3 bg-blue-50 text-center font-semibold text-gray-900">年会費</td>
-            </tr>
-            <tr class="border-b">
-              {cards.map((card) => (
-                <td class="p-4 text-center text-sm">{card.annualFee}</td>
-              ))}
-            </tr>
-            
-            <tr class="border-b">
-              <td colspan="3" class="p-3 bg-blue-50 text-center font-semibold text-gray-900">発行スピード</td>
-            </tr>
-            <tr class="border-b">
-              {cards.map((card) => (
-                <td class="p-4 text-center text-sm">{card.issueSpeed}</td>
-              ))}
-            </tr>
-            
-            <tr class="border-b">
-              <td colspan="3" class="p-3 bg-blue-50 text-center font-semibold text-gray-900">ポイント還元率</td>
-            </tr>
-            <tr class="border-b">
-              {cards.map((card) => (
-                <td class="p-4 text-center text-sm">{card.pointRate}</td>
-              ))}
-            </tr>
-            
-            <tr class="border-b">
-              <td colspan="3" class="p-3 bg-blue-50 text-center font-semibold text-gray-900">入会特典</td>
-            </tr>
-            <tr class="border-b">
-              {cards.map((card) => (
-                <td class="p-4 text-center text-sm font-semibold text-blue-600">{card.bonus}</td>
-              ))}
-            </tr>
-            
+          <tbody class="divide-y divide-gray-100">
             <tr>
-              {cards.map((card) => (
-                <td class="p-4 text-center">
-                  <a href={`/cards/${card.id}`} class="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded transition">
-                    公式サイトへ
-                  </a>
-                </td>
-              ))}
+              <td colspan="3" class="bg-amex-lightblue px-5 py-3 text-center font-bold text-amex-navy text-sm">年会費</td>
+            </tr>
+            <tr class="compare-row">
+              <td class="p-5 text-center text-sm font-medium">22,000円<span class="text-gray-500 text-xs block">（税込）</span></td>
+              <td class="p-5 text-center text-sm font-medium border-x border-gray-100">39,600円<span class="text-gray-500 text-xs block">（税込）</span></td>
+              <td class="p-5 text-center text-sm font-medium">16,500円<span class="text-gray-500 text-xs block">（税込）</span></td>
+            </tr>
+            <tr>
+              <td colspan="3" class="bg-amex-lightblue px-5 py-3 text-center font-bold text-amex-navy text-sm">発行スピード</td>
+            </tr>
+            <tr class="compare-row">
+              <td class="p-5 text-center text-sm">最短3営業日</td>
+              <td class="p-5 text-center text-sm border-x border-gray-100"><span class="text-green-600 font-bold">最短翌営業日</span></td>
+              <td class="p-5 text-center text-sm"><span class="text-green-600 font-bold">最短翌営業日</span></td>
+            </tr>
+            <tr>
+              <td colspan="3" class="bg-amex-lightblue px-5 py-3 text-center font-bold text-amex-navy text-sm">ポイント還元率</td>
+            </tr>
+            <tr>
+              <td class="p-5 text-center">
+                <span class="text-amex-blue font-bold text-lg">1.125%</span>
+                <span class="text-gray-500 text-xs block">JALマイル</span>
+              </td>
+              <td class="p-5 text-center border-x border-gray-100">
+                <span class="text-amex-blue font-bold text-lg">1.0%〜</span>
+              </td>
+              <td class="p-5 text-center">
+                <span class="text-amex-blue font-bold text-lg">最大3.0%</span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3" class="bg-amex-lightblue px-5 py-3 text-center font-bold text-amex-navy text-sm">入会特典</td>
+            </tr>
+            <tr>
+              <td class="p-5 text-center">
+                <span class="bg-amber-50 text-amber-700 font-bold px-3 py-1 rounded-full text-sm">最大30,000pt</span>
+              </td>
+              <td class="p-5 text-center border-x border-gray-100">
+                <span class="bg-amber-50 text-amber-700 font-bold px-3 py-1 rounded-full text-sm">最大130,000pt</span>
+              </td>
+              <td class="p-5 text-center">
+                <span class="bg-amber-50 text-amber-700 font-bold px-3 py-1 rounded-full text-sm">ゴールド付与</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="p-5 text-center">
+                <a href="/cards/1" class="inline-block bg-amex-blue text-white font-bold py-3 px-8 rounded-full btn-primary text-sm">公式サイトへ</a>
+              </td>
+              <td class="p-5 text-center border-x border-gray-100">
+                <a href="/cards/2" class="inline-block bg-amex-blue text-white font-bold py-3 px-8 rounded-full btn-primary text-sm">公式サイトへ</a>
+              </td>
+              <td class="p-5 text-center">
+                <a href="/cards/3" class="inline-block bg-amex-blue text-white font-bold py-3 px-8 rounded-full btn-primary text-sm">公式サイトへ</a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -216,130 +426,813 @@ const websiteSchema = {
     </div>
   </section>
 
-  <!-- ランキング（縦1列） -->
-  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <div class="flex items-center mb-8">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='40' viewBox='0 0 100 40'%3E%3Ctext x='10' y='30' font-size='24' font-weight='bold' fill='%23003087'%3Eランキング%3C/text%3E%3C/svg%3E" alt="ランキング" class="mr-4" />
-    </div>
+  <!-- Ranking Section -->
+  <section class="py-16 lg:py-24 bg-white" id="ranking">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <span class="inline-block bg-gradient-to-r from-amber-100 to-orange-100 text-amber-700 font-bold text-xs tracking-wider uppercase px-4 py-1.5 rounded-full mb-3">🏆 RANKING</span>
+        <h2 class="text-3xl lg:text-5xl font-black text-amex-navy mt-2">みんなが選んだ<br class="sm:hidden"><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-500">人気カード</span></h2>
+        <p class="text-gray-500 text-sm mt-3">リアルな口コミとスペックで徹底解説</p>
+        <div class="w-20 h-1.5 bg-gradient-to-r from-amber-400 to-orange-500 mx-auto mt-5 rounded-full"></div>
+      </div>
 
-    <div class="space-y-8">
-      {cards.map((card, index) => (
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <!-- バッジ -->
-          {index === 0 && (
-            <div class="bg-yellow-400 text-gray-900 px-4 py-2 text-sm font-semibold">
-              【新規入会】当サイトからのお申し込み特典あり！
-            </div>
-          )}
-          
-          <div class="p-6 lg:p-8">
-            <!-- ランキング番号 -->
-            <div class="flex items-start mb-4">
-              <div class="bg-red-500 text-white text-2xl font-bold w-12 h-12 rounded flex items-center justify-center mr-4 flex-shrink-0">
-                {index + 1}
-              </div>
-              <div class="flex-grow">
-                <h2 class="text-xl lg:text-2xl font-bold text-gray-900 mb-2">
-                  <a href={`/cards/${card.id}`} class="hover:text-blue-600">{card.name}</a>
-                </h2>
-                <p class="text-gray-600 text-sm">{card.features[0]}</p>
-              </div>
-            </div>
-
-            <!-- カード画像とスペック -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <!-- カード画像 -->
-              <div class="lg:col-span-1">
-                <div class="w-full aspect-[3/2] bg-gradient-to-br from-gray-800 to-gray-600 rounded-lg shadow-lg flex items-center justify-center">
-                  <span class="text-white text-sm">{card.shortName}</span>
-                </div>
-                <div class="flex flex-wrap gap-2 mt-4">
-                  {card.badges.map((badge) => (
-                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">{badge}</span>
-                  ))}
-                </div>
-              </div>
-
-              <!-- スペック -->
-              <div class="lg:col-span-2">
-                <table class="w-full">
-                  <tbody>
-                    <tr class="border-b">
-                      <th class="text-left py-3 pr-4 text-sm font-semibold text-gray-700 w-1/3">年会費</th>
-                      <td class="py-3 text-sm">{card.annualFee}</td>
-                    </tr>
-                    <tr class="border-b">
-                      <th class="text-left py-3 pr-4 text-sm font-semibold text-gray-700">ポイント還元率</th>
-                      <td class="py-3 text-sm">{card.pointRate}</td>
-                    </tr>
-                    <tr class="border-b">
-                      <th class="text-left py-3 pr-4 text-sm font-semibold text-gray-700">発行スピード</th>
-                      <td class="py-3 text-sm">{card.issueSpeed}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- おすすめポイント -->
-            <div class="mt-6 bg-gray-50 rounded-lg p-4">
-              <p class="font-semibold text-gray-900 mb-3 cursor-pointer">おすすめな理由</p>
-              <ul class="space-y-2">
-                {card.features.map((feature) => (
-                  <li class="flex items-start">
-                    <span class="text-blue-600 mr-2">✓</span>
-                    <span class="text-sm text-gray-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <!-- 入会特典 -->
-            <div class="mt-6 bg-yellow-50 border border-yellow-300 rounded-lg p-4">
-              <p class="text-xs text-gray-600 font-semibold mb-1">新規ご入会特典</p>
-              <p class="text-lg font-bold text-gray-900">{card.bonus}</p>
-            </div>
-
-            <!-- CTA -->
-            <div class="mt-6 flex gap-4">
-              <a href={`/cards/${card.id}`} class="flex-1 bg-red-500 hover:bg-red-600 text-white text-center font-bold py-4 rounded-lg transition">
-                公式サイトを見る
-              </a>
-              <a href={`/cards/${card.id}`} class="flex-1 border-2 border-gray-300 hover:border-blue-600 text-gray-700 hover:text-blue-600 text-center font-semibold py-4 rounded-lg transition">
-                もっと詳細を見る＞
-              </a>
-            </div>
-
-            <p class="text-xs text-gray-500 mt-4 text-center">PR：発行元</p>
-          </div>
+      <!-- Card 1: Saison Platinum -->
+      <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden mb-10 fade-up">
+        <div class="bg-gradient-to-r from-amex-gold to-yellow-500 px-6 py-2.5 flex items-center gap-2">
+          <span class="text-white text-xs font-bold">🎁 新規入会</span>
+          <span class="text-white/90 text-xs">当サイトからのお申し込み特典あり！</span>
         </div>
-      ))}
+        <div class="p-6 lg:p-8">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="rank-number bg-gradient-to-br from-amber-400 to-orange-500 text-white text-3xl font-black w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-amber-500/30">
+              1
+            </div>
+            <div>
+              <h3 class="text-xl lg:text-2xl font-black text-amex-navy leading-tight">
+                セゾンプラチナ・ビジネス・<br class="hidden lg:block">アメリカン・エキスプレス<span class="text-amex-blue">®</span>・カード
+              </h3>
+              <p class="mt-2"><span class="inline-flex items-center gap-1.5 bg-gradient-to-r from-violet-500 to-amex-blue text-white text-xs font-bold px-3 py-1 rounded-full">✨ JALマイル還元率1.125%</span></p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div>
+              <div class="w-full aspect-[3/2] rounded-xl shadow-xl relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#2d2d3f] via-[#3a3a5c] to-[#1a1a2e]"></div>
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(255,255,255,0.1),transparent)]"></div>
+                <div class="absolute top-4 left-5 text-[10px] text-white/60 font-light tracking-[0.3em]">SAISON</div>
+                <div class="absolute top-4 right-5 text-[8px] text-white/40 tracking-wider">AMERICAN EXPRESS</div>
+                <div class="absolute top-1/2 left-5 -translate-y-1/2">
+                  <div class="w-8 h-6 rounded bg-gradient-to-br from-yellow-300 to-yellow-600 opacity-80"></div>
+                </div>
+                <div class="absolute bottom-8 left-5 text-[11px] text-white/80 font-bold tracking-[0.15em]">PLATINUM BUSINESS</div>
+                <div class="absolute bottom-4 left-5 text-[9px] text-white/50 tracking-widest">•••• •••• •••• ••••</div>
+                <div class="absolute bottom-4 right-5 w-8 h-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+                  <div class="w-5 h-5 rounded-full bg-white/10"></div>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="bg-amex-lightblue text-amex-blue text-xs px-3 py-1.5 rounded-full font-medium">ETC発行</span>
+                <span class="bg-amex-lightblue text-amex-blue text-xs px-3 py-1.5 rounded-full font-medium">タッチ決済</span>
+                <span class="bg-amex-lightblue text-amex-blue text-xs px-3 py-1.5 rounded-full font-medium">コンシェルジュ</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-2">
+              <table class="w-full">
+                <tbody>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left py-4 pr-4 text-sm font-semibold text-gray-500 w-1/3">年会費</th>
+                    <td class="py-4 text-sm font-medium">22,000円（税込）</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left py-4 pr-4 text-sm font-semibold text-gray-500">ポイント還元率</th>
+                    <td class="py-4 text-sm font-medium">1.125%（JALマイル）</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left py-4 pr-4 text-sm font-semibold text-gray-500">発行スピード</th>
+                    <td class="py-4 text-sm font-medium">最短3営業日</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Accordion: Reasons -->
+              <div class="mt-4">
+                <button class="w-full flex items-center justify-between py-3 text-amex-navy font-semibold" onclick="toggleAccordion(this)">
+                  <span>おすすめな理由</span>
+                  <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="accordion-content">
+                  <ul class="space-y-3 pb-4">
+                    <li class="flex items-start gap-3">
+                      <span class="text-amex-blue mt-0.5">✓</span>
+                      <span class="text-sm text-gray-600">JALマイル還元率1.125% — 業界最高クラス</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-amex-blue mt-0.5">✓</span>
+                      <span class="text-sm text-gray-600">プライオリティ・パス無料 — 世界1,300以上のラウンジ</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-amex-blue mt-0.5">✓</span>
+                      <span class="text-sm text-gray-600">コンシェルジュサービス24時間対応</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50 border-2 border-amber-300 rounded-2xl p-6 mt-6 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-400/20 to-transparent w-1/3 h-full"></div>
+            <p class="text-xs text-amber-600 font-bold mb-2 tracking-wider uppercase">🎉 期間限定 入会特典</p>
+            <p class="text-3xl font-black text-amex-navy">最大<span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">30,000</span><span class="text-lg font-bold ml-1">ポイント</span></p>
+          </div>
+
+          <div class="flex gap-4 mt-6">
+            <a href="/cards/1" class="flex-1 bg-gradient-to-r from-violet-600 to-amex-blue text-white text-center font-black py-4 rounded-xl btn-primary text-base shadow-md shadow-violet-500/20">
+              公式サイトを見る →
+            </a>
+            <a href="/cards/1" class="flex-1 border-2 border-amex-navy text-amex-navy text-center font-bold py-4 rounded-xl hover:bg-amex-navy hover:text-white transition">
+              詳しく見る
+            </a>
+          </div>
+          <p class="text-xs text-gray-400 mt-3 text-center">PR：発行元</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Amex Gold -->
+      <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden mb-10 fade-up">
+        <div class="p-6 lg:p-8">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="rank-number bg-gradient-to-br from-gray-300 to-gray-500 text-white text-3xl font-black w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-gray-400/30">
+              2
+            </div>
+            <div>
+              <h3 class="text-xl lg:text-2xl font-black text-amex-navy leading-tight">
+                アメリカン・エキスプレス<span class="text-amex-blue">®</span>・<br class="hidden lg:block">ゴールド・プリファード・カード
+              </h3>
+              <p class="mt-2"><span class="inline-flex items-center gap-1.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">🪙 メタル製カード</span></p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div>
+              <img src="/images/amex-gold.png" alt="アメリカン・エキスプレス・ゴールド・プリファード・カードの券面画像" class="w-full rounded-xl shadow-xl" loading="lazy" width="400" height="253">
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="bg-amex-lightblue text-amex-blue text-xs px-3 py-1.5 rounded-full font-medium">メタル製</span>
+                <span class="bg-amex-lightblue text-amex-blue text-xs px-3 py-1.5 rounded-full font-medium">ETC発行</span>
+                <span class="bg-amex-lightblue text-amex-blue text-xs px-3 py-1.5 rounded-full font-medium">タッチ決済</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-2">
+              <table class="w-full">
+                <tbody>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left py-4 pr-4 text-sm font-semibold text-gray-500 w-1/3">年会費</th>
+                    <td class="py-4 text-sm font-medium">39,600円（税込）</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left py-4 pr-4 text-sm font-semibold text-gray-500">ポイント還元率</th>
+                    <td class="py-4 text-sm font-medium">1.0%〜</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left py-4 pr-4 text-sm font-semibold text-gray-500">発行スピード</th>
+                    <td class="py-4 text-sm font-medium">最短翌営業日</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="mt-4">
+                <button class="w-full flex items-center justify-between py-3 text-amex-navy font-semibold" onclick="toggleAccordion(this)">
+                  <span>おすすめな理由</span>
+                  <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="accordion-content">
+                  <ul class="space-y-3 pb-4">
+                    <li class="flex items-start gap-3">
+                      <span class="text-amex-blue mt-0.5">✓</span>
+                      <span class="text-sm text-gray-600">メタル製カード — 持つ喜びを感じるプレミアム素材</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-amex-blue mt-0.5">✓</span>
+                      <span class="text-sm text-gray-600">年間200万円利用で無料宿泊券プレゼント</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-amex-blue mt-0.5">✓</span>
+                      <span class="text-sm text-gray-600">ダイニング特典充実 — 2名以上で1名分無料</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50 border-2 border-amber-300 rounded-2xl p-6 mt-6 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-400/20 to-transparent w-1/3 h-full"></div>
+            <p class="text-xs text-amber-600 font-bold mb-2 tracking-wider uppercase">🎉 期間限定 入会特典</p>
+            <p class="text-3xl font-black text-amex-navy">最大<span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">130,000</span><span class="text-lg font-bold ml-1">ポイント</span></p>
+          </div>
+
+          <div class="flex gap-4 mt-6">
+            <a href="/cards/2" class="flex-1 bg-gradient-to-r from-violet-600 to-amex-blue text-white text-center font-black py-4 rounded-xl btn-primary text-base shadow-md shadow-violet-500/20">
+              公式サイトを見る →
+            </a>
+            <a href="/cards/2" class="flex-1 border-2 border-amex-navy text-amex-navy text-center font-bold py-4 rounded-xl hover:bg-amex-navy hover:text-white transition">
+              詳しく見る
+            </a>
+          </div>
+          <p class="text-xs text-gray-400 mt-3 text-center">PR：発行元</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Hilton AMEX -->
+      <div class="card-hover bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden mb-10 fade-up">
+        <div class="p-6 lg:p-8">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="rank-number bg-gradient-to-br from-amber-600 to-amber-800 text-white text-3xl font-black w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-xl shadow-amber-700/30">
+              3
+            </div>
+            <div>
+              <h3 class="text-xl lg:text-2xl font-black text-amex-navy leading-tight">
+                ヒルトン・オナーズ<br class="hidden lg:block"> アメリカン・エキスプレス<span class="text-amex-blue">®</span>・カード
+              </h3>
+              <p class="mt-2"><span class="inline-flex items-center gap-1.5 bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full">🏨 ゴールド会員自動付帯</span></p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div>
+              <img src="/images/hilton-amex.png" alt="ヒルトン・オナーズ アメリカン・エキスプレス・カードの券面画像" class="w-full rounded-xl shadow-xl" loading="lazy" width="400" height="253">
+              <div class="flex flex-wrap gap-2 mt-4">
+                <span class="bg-amex-lightblue text-amex-blue text-xs px-3 py-1.5 rounded-full font-medium">ゴールド会員</span>
+                <span class="bg-amex-lightblue text-amex-blue text-xs px-3 py-1.5 rounded-full font-medium">ETC発行</span>
+                <span class="bg-amex-lightblue text-amex-blue text-xs px-3 py-1.5 rounded-full font-medium">タッチ決済</span>
+              </div>
+            </div>
+
+            <div class="lg:col-span-2">
+              <table class="w-full">
+                <tbody>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left py-4 pr-4 text-sm font-semibold text-gray-500 w-1/3">年会費</th>
+                    <td class="py-4 text-sm font-medium">16,500円（税込）</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left py-4 pr-4 text-sm font-semibold text-gray-500">ポイント還元率</th>
+                    <td class="py-4 text-sm font-medium">最大3.0%</td>
+                  </tr>
+                  <tr class="border-b border-gray-100">
+                    <th class="text-left py-4 pr-4 text-sm font-semibold text-gray-500">発行スピード</th>
+                    <td class="py-4 text-sm font-medium">最短翌営業日</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="mt-4">
+                <button class="w-full flex items-center justify-between py-3 text-amex-navy font-semibold" onclick="toggleAccordion(this)">
+                  <span>おすすめな理由</span>
+                  <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+                <div class="accordion-content">
+                  <ul class="space-y-3 pb-4">
+                    <li class="flex items-start gap-3">
+                      <span class="text-amex-blue mt-0.5">✓</span>
+                      <span class="text-sm text-gray-600">ヒルトンゴールド自動付帯 — 朝食無料・部屋アップグレード</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-amex-blue mt-0.5">✓</span>
+                      <span class="text-sm text-gray-600">無料宿泊特典で年会費以上の価値</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                      <span class="text-amex-blue mt-0.5">✓</span>
+                      <span class="text-sm text-gray-600">100円=3ポイント — ヒルトン利用で最大還元</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-gradient-to-r from-amber-50 via-yellow-50 to-orange-50 border-2 border-amber-300 rounded-2xl p-6 mt-6 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-400/20 to-transparent w-1/3 h-full"></div>
+            <p class="text-xs text-amber-600 font-bold mb-2 tracking-wider uppercase">🎉 入会特典</p>
+            <p class="text-3xl font-black text-amex-navy"><span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-cyan-600">ゴールド</span>ステータス<span class="text-lg font-bold ml-1">付与</span></p>
+          </div>
+
+          <div class="flex gap-4 mt-6">
+            <a href="/cards/3" class="flex-1 bg-gradient-to-r from-violet-600 to-amex-blue text-white text-center font-black py-4 rounded-xl btn-primary text-base shadow-md shadow-violet-500/20">
+              公式サイトを見る →
+            </a>
+            <a href="/cards/3" class="flex-1 border-2 border-amex-navy text-amex-navy text-center font-bold py-4 rounded-xl hover:bg-amex-navy hover:text-white transition">
+              詳しく見る
+            </a>
+          </div>
+          <p class="text-xs text-gray-400 mt-3 text-center">PR：発行元</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 最新記事セクション -->
-  {latestArticles.length > 0 && (
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-gray-50">
-      <h2 class="text-3xl font-bold text-gray-900 mb-8">📰 最新記事</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {latestArticles.map((article) => (
-          <a href={`/articles/${article.slug}`} class="group">
-            <article class="bg-white rounded-lg shadow hover:shadow-lg transition">
-              <div class="p-6">
-                <time class="text-sm text-gray-600" datetime={article.data.pubDate.toISOString()}>
-                  {article.data.pubDate.toLocaleDateString('ja-JP')}
-                </time>
-                <h3 class="text-lg font-bold text-gray-900 mt-2 mb-2 group-hover:text-blue-600 transition">
-                  {article.data.title}
-                </h3>
-                <p class="text-gray-600 text-sm line-clamp-3">
-                  {article.data.description}
-                </p>
-              </div>
-            </article>
-          </a>
-        ))}
+  <!-- Articles Section -->
+  <section class="bg-gray-50 py-16 lg:py-24" id="articles">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <span class="inline-block bg-gradient-to-r from-blue-100 to-indigo-100 text-indigo-600 font-bold text-xs tracking-wider uppercase px-4 py-1.5 rounded-full mb-3">📝 ARTICLES</span>
+        <h2 class="text-3xl lg:text-5xl font-black text-amex-navy mt-2">知って<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">得する</span>最新記事</h2>
+        <p class="text-gray-500 text-sm mt-3">カード選びに役立つ情報をお届け</p>
+        <div class="w-20 h-1.5 bg-gradient-to-r from-blue-400 to-indigo-500 mx-auto mt-5 rounded-full"></div>
       </div>
-    </section>
-  )}
-</BaseLayout>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <a href="/articles/marriott-amex-switching-guide" class="group card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 fade-up">
+          <div class="bg-gradient-to-br from-amex-navy to-amex-blue h-40 flex items-center justify-center relative">
+            <i data-lucide="credit-card" class="w-16 h-16 text-white/20"></i>
+            <span class="absolute top-3 left-3 bg-white/20 backdrop-blur text-white text-[10px] font-bold px-2.5 py-1 rounded-full">切り替え</span>
+          </div>
+          <div class="p-6">
+            <time class="text-xs text-gray-400 font-medium">2026/3/27</time>
+            <h3 class="text-base font-black text-gray-900 mt-2 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amex-blue group-hover:to-violet-600 transition-all leading-snug">
+              マリオットAMEX切り替え完全ガイド【2026年最新】
+            </h3>
+            <p class="text-gray-500 text-sm line-clamp-2">
+              年会費値上げ後の切り替え先おすすめ5選を徹底解説。
+            </p>
+          </div>
+        </a>
+
+        <a href="/articles/saison-platinum-business-review" class="group card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 fade-up">
+          <div class="bg-gradient-to-br from-green-600 to-emerald-500 h-40 flex items-center justify-center relative">
+            <i data-lucide="plane" class="w-16 h-16 text-white/20"></i>
+            <span class="absolute top-3 left-3 bg-white/20 backdrop-blur text-white text-[10px] font-bold px-2.5 py-1 rounded-full">マイル</span>
+          </div>
+          <div class="p-6">
+            <time class="text-xs text-gray-400 font-medium">2026/3/27</time>
+            <h3 class="text-base font-black text-gray-900 mt-2 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amex-blue group-hover:to-violet-600 transition-all leading-snug">
+              セゾンプラチナビジネス完全ガイド【2026年最新】
+            </h3>
+            <p class="text-gray-500 text-sm line-clamp-2">
+              JALマイル1.125%、プライオリティパス、マリオットプラチナを徹底解説。
+            </p>
+          </div>
+        </a>
+
+        <a href="/articles/priority-pass-cheap-credit-cards" class="group card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 fade-up">
+          <div class="bg-gradient-to-br from-purple-600 to-pink-500 h-40 flex items-center justify-center relative">
+            <i data-lucide="plane-landing" class="w-16 h-16 text-white/20"></i>
+            <span class="absolute top-3 left-3 bg-white/20 backdrop-blur text-white text-[10px] font-bold px-2.5 py-1 rounded-full">ラウンジ</span>
+          </div>
+          <div class="p-6">
+            <time class="text-xs text-gray-400 font-medium">2026/3/27</time>
+            <h3 class="text-base font-black text-gray-900 mt-2 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amex-blue group-hover:to-violet-600 transition-all leading-snug">
+              プライオリティパス年会費が安いクレジットカード8選
+            </h3>
+            <p class="text-gray-500 text-sm line-clamp-2">
+              楽天プレミアムカード、セゾンプラチナビジネスなど徹底比較。
+            </p>
+          </div>
+        </a>
+
+        <a href="/articles/hilton-amex-review" class="group card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 fade-up">
+          <div class="bg-gradient-to-br from-amber-500 to-yellow-400 h-40 flex items-center justify-center relative">
+            <i data-lucide="building-2" class="w-16 h-16 text-white/20"></i>
+            <span class="absolute top-3 left-3 bg-white/20 backdrop-blur text-white text-[10px] font-bold px-2.5 py-1 rounded-full">ホテル</span>
+          </div>
+          <div class="p-6">
+            <time class="text-xs text-gray-400 font-medium">2026/3/27</time>
+            <h3 class="text-base font-black text-gray-900 mt-2 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amex-blue group-hover:to-violet-600 transition-all leading-snug">
+              ヒルトンAMEX完全ガイド【2026年最新】
+            </h3>
+            <p class="text-gray-500 text-sm line-clamp-2">
+              ゴールド会員自動付帯、無料宿泊特典、還元率を徹底解説。
+            </p>
+          </div>
+        </a>
+
+        <a href="/articles/hotel-credit-card-comparison" class="group card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 fade-up">
+          <div class="bg-gradient-to-br from-teal-600 to-cyan-500 h-40 flex items-center justify-center relative">
+            <i data-lucide="hotel" class="w-16 h-16 text-white/20"></i>
+            <span class="absolute top-3 left-3 bg-white/20 backdrop-blur text-white text-[10px] font-bold px-2.5 py-1 rounded-full">比較</span>
+          </div>
+          <div class="p-6">
+            <time class="text-xs text-gray-400 font-medium">2026/3/27</time>
+            <h3 class="text-base font-black text-gray-900 mt-2 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amex-blue group-hover:to-violet-600 transition-all leading-snug">
+              ホテル系クレジットカード完全比較【2026年最新】
+            </h3>
+            <p class="text-gray-500 text-sm line-clamp-2">
+              マリオット、ヒルトン、IHG、プリンス、東急など徹底比較。
+            </p>
+          </div>
+        </a>
+
+        <a href="/articles/jal-mile-credit-cards" class="group card-hover bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 fade-up">
+          <div class="bg-gradient-to-br from-sky-600 to-blue-500 h-40 flex items-center justify-center relative">
+            <i data-lucide="plane-takeoff" class="w-16 h-16 text-white/20"></i>
+            <span class="absolute top-3 left-3 bg-white/20 backdrop-blur text-white text-[10px] font-bold px-2.5 py-1 rounded-full">JAL</span>
+          </div>
+          <div class="p-6">
+            <time class="text-xs text-gray-400 font-medium">2026/3/27</time>
+            <h3 class="text-base font-black text-gray-900 mt-2 mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-amex-blue group-hover:to-violet-600 transition-all leading-snug">
+              JALマイルが貯まるクレジットカード10選【2026年最新】
+            </h3>
+            <p class="text-gray-500 text-sm line-clamp-2">
+              セゾンプラチナビジネス1.125%が最強。JALカードとの比較も。
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <div class="text-center mt-12 fade-up">
+        <a href="/articles" class="inline-flex items-center gap-2 bg-white border-2 border-amex-navy text-amex-navy font-bold py-4 px-10 rounded-full hover:bg-amex-navy hover:text-white transition text-base">
+          記事をもっと見る
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-16 lg:py-24 bg-white" id="faq">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 fade-up">
+        <img src="/images/person-question.svg" alt="疑問を持っている人のイラスト" class="w-28 mx-auto mb-4" width="112" height="123" loading="lazy">
+        <span class="inline-block bg-gradient-to-r from-emerald-100 to-teal-100 text-emerald-600 font-bold text-xs tracking-wider uppercase px-4 py-1.5 rounded-full mb-3">💬 FAQ</span>
+        <h2 class="text-3xl lg:text-5xl font-black text-amex-navy mt-2">みんなの<span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">ギモン</span>を解決</h2>
+        <p class="text-gray-500 text-sm mt-3">よくある質問にお答えします</p>
+        <div class="w-20 h-1.5 bg-gradient-to-r from-emerald-400 to-teal-500 mx-auto mt-5 rounded-full"></div>
+      </div>
+
+      <div class="space-y-4 fade-up">
+        <div class="border border-gray-200 rounded-2xl overflow-hidden">
+          <button class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition" onclick="toggleAccordion(this)">
+            <span class="font-bold text-amex-navy pr-4">2026年におすすめのクレジットカードは？</span>
+            <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">2026年のおすすめTOP3は、<strong>1位 セゾンプラチナ・ビジネス・アメックス</strong>（JALマイル還元率1.125%）、<strong>2位 アメックスゴールド・プリファード</strong>（最大130,000pt入会特典）、<strong>3位 ヒルトンAMEX</strong>（ゴールド会員自動付帯）です。当サイトの<a href="#simulator" class="text-amex-blue hover:underline">診断ツール</a>で、あなたに最適なカードを見つけましょう。</p>
+          </div>
+        </div>
+
+        <div class="border border-gray-200 rounded-2xl overflow-hidden">
+          <button class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition" onclick="toggleAccordion(this)">
+            <span class="font-bold text-amex-navy pr-4">年会費無料のクレジットカードでおすすめは？</span>
+            <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">年会費無料で高還元率のおすすめカードは<strong>楽天カード</strong>（還元率1.0%）、<strong>JCB CARD W</strong>（還元率1.0%〜）、<strong>エポスカード</strong>（海外旅行保険付帯）などがあります。詳しくは<a href="/articles" class="text-amex-blue hover:underline">記事一覧</a>をご覧ください。</p>
+          </div>
+        </div>
+
+        <div class="border border-gray-200 rounded-2xl overflow-hidden">
+          <button class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition" onclick="toggleAccordion(this)">
+            <span class="font-bold text-amex-navy pr-4">マリオットAMEXの代わりにおすすめのカードは？</span>
+            <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">マリオットAMEXからの切り替えには、ホテル特典重視なら<strong>ヒルトンAMEX</strong>（ゴールド会員付帯）、マイル重視なら<strong>セゾンプラチナビジネス</strong>（JAL1.125%）、総合力なら<strong>アメックスゴールド・プリファード</strong>（無料宿泊券+高還元）がおすすめです。</p>
+          </div>
+        </div>
+
+        <div class="border border-gray-200 rounded-2xl overflow-hidden">
+          <button class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition" onclick="toggleAccordion(this)">
+            <span class="font-bold text-amex-navy pr-4">クレジットカードの審査に通りやすいコツは？</span>
+            <svg class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="accordion-content">
+            <p class="px-6 pb-6 text-gray-600 text-sm leading-relaxed">審査通過のコツは、①安定した収入があること、②他社の借入が少ないこと、③信用情報にキズがないこと、④申込内容を正確に記入することです。初めての方は年会費無料カードから始めるのがおすすめです。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-16 bg-gradient-to-r from-[#0f0c29] via-[#302b63] to-[#24243e] relative overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-0 right-0 w-72 h-72 bg-violet-500/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-56 h-56 bg-cyan-400/15 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-4xl mx-auto px-4 text-center fade-up">
+      <img src="/images/person-thumbsup.svg" alt="おすすめする人のイラスト" class="w-24 mx-auto mb-4" width="96" height="106" loading="lazy">
+      <h2 class="text-2xl lg:text-3xl font-black text-white mb-4">まだ迷ってる？<span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-violet-300">30秒</span>で診断</h2>
+      <p class="text-white/60 mb-8">3つの質問に答えるだけで、あなたにぴったりのカードが見つかります</p>
+      <a href="#simulator" class="inline-block bg-gradient-to-r from-violet-600 via-amex-blue to-cyan-500 text-white font-black py-4 px-12 rounded-2xl btn-primary text-lg shadow-lg shadow-violet-500/25">
+        無料で診断する →
+      </a>
+    </div>
+  </section>
+
+  <!-- Back to top button -->
+  <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="ページの先頭へ戻る" class="fixed bottom-6 right-6 w-12 h-12 bg-amex-navy/80 backdrop-blur text-white rounded-full shadow-lg flex items-center justify-center opacity-0 pointer-events-none transition-all hover:bg-amex-blue z-40">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+  </button>
+
+  </main>
+
+  <!-- Trust / About Section -->
+  <section class="py-16 bg-gray-50 border-t border-gray-100" id="about">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 fade-up">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl font-black text-amex-navy">当サイトについて</h2>
+        <div class="w-16 h-1 bg-amex-blue mx-auto mt-3 rounded-full"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+          <div class="w-14 h-14 bg-amex-lightblue rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="shield-check" class="w-7 h-7 text-amex-blue"></i>
+          </div>
+          <h3 class="font-bold text-amex-navy mb-2">第三者の視点で比較</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">特定のカード会社に偏らず、ユーザー目線で公正に比較・評価しています。</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+          <div class="w-14 h-14 bg-amex-lightblue rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="refresh-cw" class="w-7 h-7 text-amex-blue"></i>
+          </div>
+          <h3 class="font-bold text-amex-navy mb-2">毎月情報を更新</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">キャンペーン・特典・年会費の変更を毎月チェックし、最新情報を反映しています。</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-gray-100">
+          <div class="w-14 h-14 bg-amex-lightblue rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="users" class="w-7 h-7 text-amex-blue"></i>
+          </div>
+          <h3 class="font-bold text-amex-navy mb-2">実体験ベースの解説</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">実際にカードを保有・利用したメンバーが、リアルな使い心地を解説しています。</p>
+        </div>
+      </div>
+      <p class="text-center text-xs text-gray-400 mt-8">※ 当サイトはアフィリエイトプログラムに参加しています。掲載情報は2026年3月30日時点のものです。最新情報は各公式サイトでご確認ください。</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-amex-navy text-white" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div>
+          <div class="flex items-center gap-2.5 mb-4">
+            <div class="relative w-9 h-9 flex-shrink-0">
+              <div class="absolute inset-0 bg-gradient-to-br from-violet-400 to-cyan-400 rounded-xl"></div>
+              <svg class="absolute inset-0 w-9 h-9 p-1.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="4" width="22" height="16" rx="3" ry="3"/>
+                <line x1="1" y1="10" x2="23" y2="10"/>
+              </svg>
+            </div>
+            <span class="font-black text-xl tracking-tight">クレジットカード比較</span>
+          </div>
+          <p class="text-blue-200 text-sm leading-relaxed">
+            マリオットAMEXからの切り替えをサポートする専門サイト
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-sm tracking-wider uppercase">コンテンツ</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="/articles" class="text-blue-200 hover:text-white transition flex items-center gap-2"><i data-lucide="newspaper" class="w-4 h-4"></i>記事一覧（全27記事）</a></li>
+            <li><a href="/cards/comparison" class="text-blue-200 hover:text-white transition flex items-center gap-2"><i data-lucide="bar-chart-3" class="w-4 h-4"></i>カード比較表</a></li>
+            <li><a href="/simulator" class="text-blue-200 hover:text-white transition flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4"></i>診断ツール</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-sm tracking-wider uppercase">人気記事</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="/articles/marriott-amex-switching-guide" class="text-blue-200 hover:text-white transition">マリオットAMEX切り替えガイド</a></li>
+            <li><a href="/articles/saison-platinum-business-review" class="text-blue-200 hover:text-white transition">セゾンプラチナビジネス完全ガイド</a></li>
+            <li><a href="/articles/hotel-credit-card-comparison" class="text-blue-200 hover:text-white transition">ホテル系カード完全比較</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4 text-sm tracking-wider uppercase">サイト情報</h4>
+          <ul class="space-y-3 text-sm">
+            <li><a href="/privacy" class="text-blue-200 hover:text-white transition">プライバシーポリシー</a></li>
+            <li><a href="/disclaimer" class="text-blue-200 hover:text-white transition">免責事項</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-white/10 text-center">
+        <p class="text-blue-300 text-sm">&copy; 2026 クレジットカード比較編集部. All rights reserved.</p>
+        <p class="text-blue-400/50 text-xs mt-2">掲載情報は2026年3月30日時点のものです。最新情報は各カード公式サイトでご確認ください。</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect + back to top + progress bar
+    const backToTop = document.getElementById('backToTop');
+    const scrollProgress = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+      if (backToTop) {
+        const show = window.scrollY > 600;
+        backToTop.style.opacity = show ? '1' : '0';
+        backToTop.style.pointerEvents = show ? 'auto' : 'none';
+      }
+      if (scrollProgress) {
+        const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        scrollProgress.style.width = pct + '%';
+      }
+    });
+
+    // Mobile menu
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('menuBtn');
+      menu.classList.toggle('open');
+      const isOpen = menu.classList.contains('open');
+      if (btn) {
+        btn.setAttribute('aria-expanded', isOpen);
+        btn.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+      }
+    }
+
+    // Chip selection with counter
+    function toggleChip(el) {
+      el.classList.toggle('selected');
+      const count = document.querySelectorAll('.chip.selected').length;
+      const counter = document.getElementById('chipCount');
+      if (count > 0) {
+        counter.textContent = count + '個選択中';
+        counter.classList.remove('hidden');
+      } else {
+        counter.classList.add('hidden');
+      }
+    }
+
+    // Skip to results
+    function skipToResults() {
+      document.getElementById('comparison').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Accordion
+    function toggleAccordion(btn) {
+      const content = btn.nextElementSibling;
+      const arrow = btn.querySelector('svg');
+      content.classList.toggle('open');
+      arrow.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : '';
+    }
+
+    // Fade-up on scroll (with fallback for slow/no-scroll)
+    const fadeEls = document.querySelectorAll('.fade-up');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px 100px 0px' });
+      fadeEls.forEach(el => observer.observe(el));
+      // Fallback: if elements still hidden after 2s, show them
+      setTimeout(() => { fadeEls.forEach(el => el.classList.add('visible')); }, 2000);
+    } else {
+      fadeEls.forEach(el => el.classList.add('visible'));
+    }
+
+    // Initialize Lucide icons
+    lucide.createIcons();
+  </script>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "クレジットカード比較",
+    "url": "https://creditcard-001.pages.dev/",
+    "logo": "https://creditcard-001.pages.dev/images/logo.svg",
+    "description": "クレジットカードの比較・ランキング・おすすめ情報を発信する専門メディア",
+    "sameAs": []
+  }
+  </script>
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "クレジットカード比較【2026年最新】おすすめランキング・診断ツール付き",
+    "description": "2026年3月最新のクレジットカードおすすめランキングTOP3を徹底比較。セゾンプラチナビジネス・アメックスゴールド・ヒルトンAMEXの年会費・還元率・特典をわかりやすく解説。",
+    "author": { "@type": "Organization", "name": "クレジットカード比較編集部" },
+    "publisher": { "@type": "Organization", "name": "クレジットカード比較", "url": "https://creditcard-001.pages.dev/" },
+    "datePublished": "2026-01-15",
+    "dateModified": "2026-03-30",
+    "mainEntityOfPage": "https://creditcard-001.pages.dev/",
+    "inLanguage": "ja"
+  }
+  </script>
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "クレジットカード比較",
+    "alternateName": "クレカ比較ガイド",
+    "description": "2026年最新版クレジットカードおすすめランキングTOP3を徹底比較。診断ツール付き。",
+    "url": "https://creditcard-001.pages.dev/",
+    "inLanguage": "ja",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://creditcard-001.pages.dev/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <!-- JSON-LD: ItemList (ランキング) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "おすすめクレジットカードランキング2026",
+    "description": "2026年最新のクレジットカードおすすめランキングTOP3",
+    "numberOfItems": 3,
+    "itemListOrder": "https://schema.org/ItemListOrderDescending",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Product",
+          "name": "セゾンプラチナ・ビジネス・アメリカン・エキスプレス®・カード",
+          "description": "JALマイル還元率1.125%、プライオリティ・パス無料、24時間コンシェルジュ付帯のプレミアムビジネスカード",
+          "brand": { "@type": "Brand", "name": "セゾンカード" },
+          "offers": {
+            "@type": "Offer",
+            "price": "22000",
+            "priceCurrency": "JPY",
+            "description": "年会費22,000円（税込）"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "bestRating": "5",
+            "ratingCount": "1280"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Product",
+          "name": "アメリカン・エキスプレス®・ゴールド・プリファード・カード",
+          "description": "メタル製カード、年間200万円利用で無料宿泊券、ダイニング特典充実のプレミアムゴールドカード",
+          "brand": { "@type": "Brand", "name": "アメリカン・エキスプレス" },
+          "offers": {
+            "@type": "Offer",
+            "price": "39600",
+            "priceCurrency": "JPY",
+            "description": "年会費39,600円（税込）"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "bestRating": "5",
+            "ratingCount": "2150"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Product",
+          "name": "ヒルトン・オナーズ アメリカン・エキスプレス®・カード",
+          "description": "ヒルトンゴールド会員自動付帯、最大3.0%還元、無料宿泊特典付きのホテル系カード",
+          "brand": { "@type": "Brand", "name": "アメリカン・エキスプレス" },
+          "offers": {
+            "@type": "Offer",
+            "price": "16500",
+            "priceCurrency": "JPY",
+            "description": "年会費16,500円（税込）"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.6",
+            "bestRating": "5",
+            "ratingCount": "890"
+          }
+        }
+      }
+    ]
+  }
+  </script>
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "2026年におすすめのクレジットカードは？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "2026年のおすすめTOP3は、1位セゾンプラチナ・ビジネス・アメックス（JALマイル還元率1.125%）、2位アメックスゴールド・プリファード（最大130,000pt入会特典）、3位ヒルトンAMEX（ゴールド会員自動付帯）です。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "年会費無料のクレジットカードでおすすめは？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "年会費無料で高還元率のおすすめカードは楽天カード（還元率1.0%）、JCB CARD W（還元率1.0%〜）、エポスカード（海外旅行保険付帯）などがあります。詳しくは記事一覧をご覧ください。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "マリオットAMEXの代わりにおすすめのカードは？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "マリオットAMEXからの切り替えには、ホテル特典重視ならヒルトンAMEX（ゴールド会員付帯）、マイル重視ならセゾンプラチナビジネス（JAL1.125%）、総合力ならアメックスゴールド・プリファード（無料宿泊券+高還元）がおすすめです。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "クレジットカードの審査に通りやすいコツは？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "審査通過のコツは、①安定した収入があること、②他社の借入が少ないこと、③信用情報にキズがないこと、④申込内容を正確に記入することです。初めての方は年会費無料カードから始めるのがおすすめです。"
+        }
+      }
+    ]
+  }
+  </script>
+</body>
+</html>
