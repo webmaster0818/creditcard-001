@@ -16,13 +16,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231a56db'/><text x='16' y='22' font-size='14' text-anchor='middle' fill='white'>💳</text></svg>">
     
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -37,64 +37,130 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL(image, Astro.site)} />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons & Tailwind CSS -->
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <script is:inline src="https://unpkg.com/lucide@latest"></script>
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    <script is:inline>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: { 50:'#eff6ff', 100:'#dbeafe', 200:'#bfdbfe', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8', 800:'#1e40af', 900:'#1e3a5f' },
+              accent: { 500:'#ef4444', 600:'#dc2626' },
+              success: '#16a34a',
+            },
+            fontFamily: { sans: ['Noto Sans JP', 'sans-serif'] }
+          }
+        }
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Noto Sans JP', sans-serif; }
+      .navbar { transition: box-shadow 0.3s; }
+      .navbar.scrolled { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+      .card-hover { transition: box-shadow 0.2s; }
+      .card-hover:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+      .btn-cta { transition: all 0.2s; }
+      .btn-cta:hover { transform: translateY(-1px); filter: brightness(1.1); }
+      .mobile-menu { transform:translateX(100%); transition:transform 0.3s ease; }
+      .mobile-menu.open { transform:translateX(0); }
+    </style>
   </head>
-  <body class="min-h-screen bg-gray-50">
-    <header class="bg-white shadow-sm border-b">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div class="flex justify-between items-center">
-          <a href="/" class="text-2xl font-bold text-blue-600">
-            クレジットカード比較
-          </a>
-          <div class="flex gap-6">
-            <a href="/articles" class="text-gray-700 hover:text-blue-600">記事一覧</a>
-            <a href="/cards/comparison" class="text-gray-700 hover:text-blue-600">カード比較</a>
-            <a href="/simulator" class="text-gray-700 hover:text-blue-600 bg-blue-100 px-3 py-1 rounded-lg font-semibold">診断ツール</a>
-          </div>
+  <body class="bg-gray-50 text-gray-800">
+    <!-- Top Bar -->
+    <div class="bg-primary-900 text-white text-xs">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-8">
+        <div class="flex items-center gap-4">
+          <span>📊 掲載カード <strong>50枚以上</strong></span>
+          <span class="hidden sm:inline">|</span>
+          <span class="hidden sm:inline">🔄 2026年3月更新</span>
         </div>
-      </nav>
-    </header>
+        <div class="flex items-center gap-4">
+          <a href="#about" class="hover:underline">運営情報</a>
+          <a href="#faq" class="hover:underline">FAQ</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar sticky top-0 w-full bg-white z-50 border-b border-gray-200" id="navbar" aria-label="メインナビゲーション">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex justify-between items-center h-14 lg:h-16">
+          <a href="/" class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-primary-700 rounded-lg flex items-center justify-center"><i data-lucide="credit-card" class="w-5 h-5 text-white"></i></div>
+            <span class="font-bold text-primary-900 text-sm lg:text-base">クレジットカード比較</span>
+          </a>
+          <div class="hidden md:flex items-center gap-1">
+            <a href="/#ranking" class="text-gray-600 hover:text-primary-700 hover:bg-primary-50 px-3 py-2 rounded text-sm font-medium">ランキング</a>
+            <a href="/#comparison" class="text-gray-600 hover:text-primary-700 hover:bg-primary-50 px-3 py-2 rounded text-sm font-medium">比較表</a>
+            <a href="/#category" class="text-gray-600 hover:text-primary-700 hover:bg-primary-50 px-3 py-2 rounded text-sm font-medium">カテゴリ別</a>
+            <a href="/articles" class="text-gray-600 hover:text-primary-700 hover:bg-primary-50 px-3 py-2 rounded text-sm font-medium">記事</a>
+            <a href="/#faq" class="text-gray-600 hover:text-primary-700 hover:bg-primary-50 px-3 py-2 rounded text-sm font-medium">FAQ</a>
+            <a href="/#ranking" class="ml-2 bg-accent-500 hover:bg-accent-600 text-white px-5 py-2 rounded-lg text-sm font-bold btn-cta">🔥 おすすめを見る</a>
+          </div>
+          <button class="md:hidden p-2" onclick="toggleMenu()" aria-label="メニューを開く" id="menuBtn" aria-expanded="false"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="fixed inset-0 bg-black/50 z-[60] opacity-0 pointer-events-none transition-opacity" id="mobileOverlay" onclick="toggleMenu()"></div>
+    <div class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white z-[70] shadow-2xl" id="mobileMenu">
+      <div class="p-5">
+        <div class="flex justify-between items-center mb-6">
+          <span class="font-bold text-gray-800">メニュー</span>
+          <button onclick="toggleMenu()" aria-label="メニューを閉じる" class="p-2 hover:bg-gray-100 rounded-lg"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        </div>
+        <div class="flex flex-col gap-1">
+          <a href="/#ranking" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary-50 text-gray-700 font-medium" onclick="toggleMenu()"><i data-lucide="trophy" class="w-4 h-4 text-primary-600"></i>ランキング</a>
+          <a href="/#comparison" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary-50 text-gray-700 font-medium" onclick="toggleMenu()"><i data-lucide="table-2" class="w-4 h-4 text-primary-600"></i>比較表</a>
+          <a href="/#category" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary-50 text-gray-700 font-medium" onclick="toggleMenu()"><i data-lucide="grid-3x3" class="w-4 h-4 text-primary-600"></i>カテゴリ別</a>
+          <a href="/articles" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary-50 text-gray-700 font-medium" onclick="toggleMenu()"><i data-lucide="file-text" class="w-4 h-4 text-primary-600"></i>記事</a>
+          <a href="/#faq" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary-50 text-gray-700 font-medium" onclick="toggleMenu()"><i data-lucide="help-circle" class="w-4 h-4 text-primary-600"></i>FAQ</a>
+        </div>
+        <div class="mt-4 pt-4 border-t"><a href="/#ranking" class="block bg-accent-500 text-white text-center px-5 py-3 rounded-lg font-bold btn-cta" onclick="toggleMenu()">🔥 おすすめカードを見る</a></div>
+      </div>
+    </div>
 
     <main>
       <slot />
     </main>
 
-    <footer class="bg-gray-800 text-white mt-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 class="text-lg font-semibold mb-4">クレジットカード比較</h3>
-            <p class="text-gray-400 text-sm">
-              マリオットAMEXからの切り替えをサポートする専門サイト
-            </p>
+            <div class="flex items-center gap-2 mb-3"><div class="w-7 h-7 bg-primary-600 rounded flex items-center justify-center"><i data-lucide="credit-card" class="w-4 h-4 text-white"></i></div><span class="font-bold text-white text-sm">クレジットカード比較</span></div>
+            <p class="text-xs leading-relaxed">年会費・還元率・特典を徹底比較する専門メディア</p>
           </div>
-          <div>
-            <h4 class="text-lg font-semibold mb-4">コンテンツ</h4>
-            <ul class="space-y-2 text-sm">
-              <li><a href="/articles" class="text-gray-400 hover:text-white">📰 記事一覧（全27記事）</a></li>
-              <li><a href="/cards/comparison" class="text-gray-400 hover:text-white">📊 カード比較表</a></li>
-              <li><a href="/simulator" class="text-gray-400 hover:text-white">💡 診断ツール</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-lg font-semibold mb-4">人気記事</h4>
-            <ul class="space-y-2 text-sm">
-              <li><a href="/articles/marriott-amex-switching-guide" class="text-gray-400 hover:text-white">マリオットAMEX切り替えガイド</a></li>
-              <li><a href="/articles/saison-platinum-vs-marriott-comparison" class="text-gray-400 hover:text-white">セゾンプラチナビジネス完全ガイド</a></li>
-              <li><a href="/articles/hotel-credit-card-comparison" class="text-gray-400 hover:text-white">ホテル系カード完全比較</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-lg font-semibold mb-4">サイト情報</h4>
-            <ul class="space-y-2 text-sm">
-              <li><a href="/privacy" class="text-gray-400 hover:text-white">プライバシーポリシー</a></li>
-              <li><a href="/disclaimer" class="text-gray-400 hover:text-white">免責事項</a></li>
-            </ul>
-          </div>
+          <div><h4 class="text-white text-xs font-bold mb-3 uppercase tracking-wider">コンテンツ</h4><ul class="space-y-2 text-xs"><li><a href="/#ranking" class="hover:text-white transition">ランキング</a></li><li><a href="/#comparison" class="hover:text-white transition">比較表</a></li><li><a href="/#category" class="hover:text-white transition">カテゴリ別</a></li></ul></div>
+          <div><h4 class="text-white text-xs font-bold mb-3 uppercase tracking-wider">記事</h4><ul class="space-y-2 text-xs"><li><a href="/articles/free-annual-fee-cards-2026" class="hover:text-white transition">初心者ガイド</a></li><li><a href="/articles/priority-pass-cheap-credit-cards" class="hover:text-white transition">空港ラウンジカード</a></li><li><a href="/articles/mile-high-return-cards" class="hover:text-white transition">高還元率カード</a></li></ul></div>
+          <div><h4 class="text-white text-xs font-bold mb-3 uppercase tracking-wider">サイト情報</h4><ul class="space-y-2 text-xs"><li><a href="#about" class="hover:text-white transition">運営情報</a></li><li><a href="#" class="hover:text-white transition">プライバシーポリシー</a></li><li><a href="#" class="hover:text-white transition">免責事項</a></li></ul></div>
         </div>
-        <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
-          <p>&copy; 2026 クレジットカード比較. All rights reserved.</p>
+        <div class="border-t border-gray-800 mt-8 pt-6 text-center">
+          <p class="text-xs">&copy; 2026 クレジットカード比較編集部</p>
+          <p class="text-[10px] text-gray-600 mt-1">※掲載情報は2026年3月31日時点のものです。最新情報は各公式サイトでご確認ください。</p>
         </div>
       </div>
     </footer>
+
+    <script is:inline>
+      const navbar=document.getElementById('navbar');
+      if (navbar) {
+        window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>10);});
+      }
+      function toggleMenu(){const m=document.getElementById('mobileMenu'),o=document.getElementById('mobileOverlay'),b=document.getElementById('menuBtn');m.classList.toggle('open');o.style.opacity=m.classList.contains('open')?'1':'0';o.style.pointerEvents=m.classList.contains('open')?'auto':'none';const isOpen=m.classList.contains('open');if(b){b.setAttribute('aria-expanded',isOpen);b.setAttribute('aria-label',isOpen?'メニューを閉じる':'メニューを開く');}document.body.style.overflow=isOpen?'hidden':'';}
+      if (typeof lucide !== 'undefined') { lucide.createIcons(); }
+    </script>
   </body>
 </html>
