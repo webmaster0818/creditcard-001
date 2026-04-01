@@ -93,7 +93,7 @@ const topTags = Array.from(tagCounts.entries())
         <h2 class="text-2xl font-bold text-gray-900 mb-6">⭐ 注目記事</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredArticles.map((article) => (
-            <a href={`/articles/${article.slug}`} class="group">
+            <a href={`/articles/${article.id.replace(/\.md$/, "")}`} class="group">
               <article class="bg-gradient-to-br from-blue-50 to-white rounded-lg shadow-md hover:shadow-xl transition h-full flex flex-col border-2 border-blue-200">
                 <div class="p-6 flex-1">
                   <div class="flex items-center gap-2 text-sm text-gray-600 mb-3">
@@ -145,7 +145,7 @@ const topTags = Array.from(tagCounts.entries())
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {sortedArticles.map((article) => (
-        <a href={`/articles/${article.slug}`} class="group">
+        <a href={`/articles/${article.id.replace(/\.md$/, "")}`} class="group">
           <article class="bg-white rounded-lg shadow hover:shadow-xl transition h-full flex flex-col">
             <div class="p-6 flex-1">
               <div class="flex items-center gap-2 text-sm text-gray-600 mb-3">
