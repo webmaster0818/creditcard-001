@@ -19,6 +19,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="generator" content={Astro.generator} />
     <meta name="google-site-verification" content="wZtszqXl5q70ykfZOCN181o5g0a0OMe-TJ4kPEsnlvk" />
     
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC79KEBJT6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HC79KEBJT6');
+    </script>
+    
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
