@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://creditcard-001.vercel.app',
+  site: 'https://credit-card-comparison.com',
   vite: {
     plugins: [tailwindcss()]
   },
