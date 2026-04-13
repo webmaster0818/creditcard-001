@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://credit-card-comparison.com/sitemap-index.xml
+Sitemap: https://credit-card-comparison.com/sitemap-0.xml
